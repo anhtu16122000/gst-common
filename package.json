@@ -1,0 +1,31 @@
+{
+  "name": "gst-common",
+  "version": "1.1.8",
+  "description": "store all common variables that we need",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsup",
+    "publish:npm": "npm publish",
+    "release": "npm run build && npm run publish:npm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhtu16122000/gst-common.git"
+  },
+  "keywords": [
+    "gst-common"
+  ],
+  "author": "anhtu-pro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhtu16122000/gst-common/issues"
+  },
+  "homepage": "https://github.com/anhtu16122000/gst-common#readme",
+  "dependencies": {
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
+  }
+}
