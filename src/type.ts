@@ -22,3 +22,9 @@ export type BaseResponse<T = any> = {
   message: string;
   data?: T;
 };
+
+export type DATA_THIRD_PARTY_LOGIN = {
+  fullname: string;
+  providerId: string;
+  provider: REGISTER_METHOD;
+};
