@@ -11,7 +11,22 @@ export type AccountSignInResponse = {
     type: CUSTOMER_TYPE;
     registerMethod: REGISTER_METHOD;
     username: string;
+    avatar: string | null;
     providerId: string;
   };
   refreshId: string;
+  expiredRefresh: string;
+};
+
+export type AccountPostMeResponse = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  fullname: string;
+  type: CUSTOMER_TYPE;
+  registerMethod: REGISTER_METHOD;
+  username: string;
+  avatar: string | null;
+  providerId: string;
 };
