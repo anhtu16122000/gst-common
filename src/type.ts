@@ -1,3 +1,5 @@
+import { AccountEntity } from "./entity";
+
 export enum CUSTOMER_TYPE {
   TUTOR = "tutor",
   STUDENT = "student",
@@ -22,6 +24,19 @@ export type BaseResponse<T = any> = {
   message: string;
   data: T;
 };
+export type BasePaginationParams = {
+  page?: number;
+  limit?: number;
+};
+
+export type BaseEntity = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  createdBy?: AccountEntity;
+  updatedBy?: AccountEntity;
+};
 
 export type DATA_THIRD_PARTY_LOGIN = {
   fullname: string;
@@ -38,4 +53,7 @@ export enum PROGRAM_SUITABLE_LEARNER {
   WORKING_PEOPLE = "working_people",
 }
 
-
+export enum SCHOOL_STATUS {
+  CURRENT = "CURRENT",
+  GRADUATED = "GRADUATED",
+}

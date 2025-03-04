@@ -2,6 +2,7 @@ import {
   CUSTOMER_TYPE,
   PROGRAM_SUITABLE_LEARNER,
   REGISTER_METHOD,
+  SCHOOL_STATUS,
 } from "./type";
 
 export const OBJECT_REGISTER_METHOD = {
@@ -46,5 +47,16 @@ export const OBJECT_PROGRAM_SUITABLE_LEARNER = {
   [PROGRAM_SUITABLE_LEARNER.WORKING_PEOPLE]: {
     value: PROGRAM_SUITABLE_LEARNER.WORKING_PEOPLE,
     label: "Người đi làm",
+  },
+};
+
+export const OBJECT_SCHOOL_STATUS = {
+  [SCHOOL_STATUS.CURRENT]: {
+    value: SCHOOL_STATUS.CURRENT,
+    label: "Đang học",
+  },
+  [SCHOOL_STATUS.GRADUATED]: {
+    value: SCHOOL_STATUS.GRADUATED,
+    label: "Đã tốt nghiệp",
   },
 };
