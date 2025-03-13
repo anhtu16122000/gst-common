@@ -40,6 +40,10 @@ export type AccountEntity = {
   createdAt: Date;
   deletedAt: Date | null;
   tutor: TutorEntity | null;
+  birthDay: string | null;
+  hiddenBirthDay: boolean;
+  phoneNumber: string | null;
+  hiddenPhoneNumber: boolean;
 };
 
 export type AdministrativeRegionEntity = {
