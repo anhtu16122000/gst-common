@@ -9,6 +9,16 @@ export enum REGISTER_METHOD {
   EMAIL = "email",
   GOOGLE = "google",
 }
+export enum GENDER {
+  MALE = "male",
+  FEMALE = "female",
+}
+
+export enum PROGRAM_METHOD {
+  ONLINE = "online",
+  OFFLINE = "offline",
+  ONLINE_OFFLINE = "online/offline",
+}
 
 export enum ResponseStatus {
   Success = "success",

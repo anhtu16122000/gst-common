@@ -1,5 +1,6 @@
 import {
   CUSTOMER_TYPE,
+  GENDER,
   PROGRAM_SUITABLE_LEARNER,
   REGISTER_METHOD,
   SCHOOL_STATUS,
@@ -58,5 +59,58 @@ export const OBJECT_SCHOOL_STATUS = {
   [SCHOOL_STATUS.GRADUATED]: {
     value: SCHOOL_STATUS.GRADUATED,
     label: "Đã tốt nghiệp",
+  },
+};
+
+export const OBJ_SESSION_PER_WEEK = {
+  [1]: {
+    label: "1 buổi/tuần",
+    value: 1,
+  },
+  [2]: {
+    label: "2 buổi/tuần",
+    value: 2,
+  },
+  [3]: {
+    label: "3 buổi/tuần",
+    value: 3,
+  },
+  [4]: {
+    label: "4 buổi/tuần",
+    value: 4,
+  },
+  [5]: {
+    label: "5 buổi/tuần",
+    value: 5,
+  },
+  [6]: {
+    label: "6 buổi/tuần",
+    value: 6,
+  },
+  [7]: {
+    label: "7 buổi/tuần",
+    value: 7,
+  },
+  [8]: {
+    label: "8 buổi/tuần",
+    value: 8,
+  },
+  [9]: {
+    label: "9 buổi/tuần",
+    value: 9,
+  },
+  [10]: {
+    label: "8 buổi/tuần",
+    value: 10,
+  },
+};
+export const OBJECT_GENDER = {
+  [GENDER.MALE]: {
+    value: GENDER.MALE,
+    label: "Nam",
+  },
+  [GENDER.FEMALE]: {
+    value: GENDER.FEMALE,
+    label: "Nữ",
   },
 };
