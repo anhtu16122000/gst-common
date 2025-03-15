@@ -7,26 +7,26 @@ import {
   SCHOOL_STATUS,
 } from "./type";
 
-export type ProgramSuitableLearnerEntity = {
+export type TProgramSuitableLearnerEntity = {
   suitableLeanerCode: PROGRAM_SUITABLE_LEARNER;
-  program: ProgramEntity;
+  program: TProgramEntity;
 } & BaseEntity;
 
-export type ProgramEntity = {
+export type TProgramEntity = {
   thumbnail: string;
   name: string;
   shortDescription: string;
   detailDescription: string;
-  suitableLearners: ProgramSuitableLearnerEntity[];
+  suitableLearners: TProgramSuitableLearnerEntity[];
   fromPrice: number;
   toPrice: number;
-  account: AccountEntity;
+  account: TAccountEntity;
   sessionPerWeek: number;
   method: PROGRAM_METHOD;
   durationPerSession: number;
 } & BaseEntity;
 
-export type AccountEntity = {
+export type TAccountEntity = {
   id: string;
   fullname: string;
   avatar: string | null;
@@ -39,14 +39,14 @@ export type AccountEntity = {
   updatedAt: Date;
   createdAt: Date;
   deletedAt: Date | null;
-  tutor: TutorEntity | null;
+  tutor: TTutorEntity | null;
   birthDay: string | null;
   hiddenBirthDay: boolean;
   phoneNumber: string | null;
   hiddenPhoneNumber: boolean;
 };
 
-export type AdministrativeRegionEntity = {
+export type TAdministrativeRegionEntity = {
   id: number;
   name: string;
   nameEn: string;
@@ -54,7 +54,7 @@ export type AdministrativeRegionEntity = {
   codeNameEn?: string;
 };
 
-export type AdministrativeUnitEntity = {
+export type TAdministrativeUnitEntity = {
   id: number;
   fullName?: string;
   fullNameEn?: string;
@@ -64,37 +64,51 @@ export type AdministrativeUnitEntity = {
   codeNameEn?: string;
 };
 
-export type ProvinceEntity = {
+export type TProvinceEntity = {
   code: string;
   name: string;
   nameEn?: string;
   fullName: string;
   fullNameEn?: string;
   codeName?: string;
-  administrativeRegion: AdministrativeRegionEntity;
-  administrativeUnit: AdministrativeUnitEntity;
+  administrativeRegion: TAdministrativeRegionEntity;
+  administrativeUnit: TAdministrativeUnitEntity;
 };
 
-export type DistrictEntity = {
+export type TDistrictEntity = {
   code: string;
   name: string;
   nameEn?: string;
   fullName?: string;
   fullNameEn?: string;
   codeName?: string;
-  province: ProvinceEntity;
-  administrativeUnit: AdministrativeUnitEntity;
+  province: TProvinceEntity;
+  administrativeUnit: TAdministrativeUnitEntity;
 };
 
-export type TutorEntity = {
+export type TTutorEntity = {
   introduction?: string;
   shortVideoUrl?: string;
   schoolName?: string;
   schoolStatus?: SCHOOL_STATUS;
   hiddenSchool: boolean;
-  district?: DistrictEntity;
-  province?: ProvinceEntity;
+  district?: TDistrictEntity;
+  province?: TProvinceEntity;
   workAt?: string;
+  birthDay?: string;
+  hiddenBirthDay?: boolean;
+  phoneNumber?: string;
+  hiddenPhoneNumber?: boolean;
   hiddenWorkAt: boolean;
-  account: AccountEntity;
+  account: TAccountEntity;
+} & BaseEntity;
+
+export type TStudent = {
+  account: TAccountEntity;
+  district?: TDistrictEntity | null;
+  province?: TProvinceEntity | null;
+  birthDay?: string | null;
+  hiddenBirthDay: boolean;
+  phoneNumber?: string | null;
+  hiddenPhoneNumber: boolean;
 } & BaseEntity;

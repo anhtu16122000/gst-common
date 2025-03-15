@@ -1,4 +1,4 @@
-import { AccountEntity } from "./entity";
+import { TAccountEntity } from "./entity";
 
 export enum CUSTOMER_TYPE {
   TUTOR = "tutor",
@@ -44,8 +44,8 @@ export type BaseEntity = {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
-  createdBy?: AccountEntity;
-  updatedBy?: AccountEntity;
+  createdBy?: TAccountEntity;
+  updatedBy?: TAccountEntity;
 };
 
 export type DATA_THIRD_PARTY_LOGIN = {

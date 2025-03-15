@@ -1,6 +1,7 @@
 import {
   CUSTOMER_TYPE,
   GENDER,
+  PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
   REGISTER_METHOD,
   SCHOOL_STATUS,
@@ -112,5 +113,19 @@ export const OBJECT_GENDER = {
   [GENDER.FEMALE]: {
     value: GENDER.FEMALE,
     label: "Nữ",
+  },
+};
+export const OBJECT_PROGRAM_METHOD = {
+  [PROGRAM_METHOD.OFFLINE]: {
+    value: PROGRAM_METHOD.OFFLINE,
+    label: "Offline",
+  },
+  [PROGRAM_METHOD.ONLINE]: {
+    value: PROGRAM_METHOD.ONLINE,
+    label: "Online",
+  },
+  [PROGRAM_METHOD.ONLINE_OFFLINE]: {
+    value: PROGRAM_METHOD.ONLINE_OFFLINE,
+    label: "Online/Offline",
   },
 };
