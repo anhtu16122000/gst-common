@@ -67,3 +67,15 @@ export enum SCHOOL_STATUS {
   CURRENT = "CURRENT",
   GRADUATED = "GRADUATED",
 }
+
+export enum NOTIFICATION_TYPE {
+  PROGRAM_REGISTER = "program_register",
+  STANDARD = "STANDARD",
+}
+
+export enum REGISTERED_PROGRAM_STATUS {
+  NEW = "NEW",
+  TESTED = "TESTED",
+  ACCEPTED = "ACCEPTED",
+  REJECTED = "REJECTED",
+}

@@ -26,6 +26,16 @@ export type TProgramEntity = {
   durationPerSession: number;
 } & BaseEntity;
 
+export type TStudentEntity = {
+  district?: TDistrictEntity | null;
+  province?: TProvinceEntity | null;
+  birthDay?: Date | null;
+  hiddenBirthDay: boolean;
+  phoneNumber?: string | null;
+  hiddenPhoneNumber: boolean;
+  account: TAccountEntity;
+} & BaseEntity;
+
 export type TAccountEntity = {
   id: string;
   fullname: string;
@@ -39,7 +49,8 @@ export type TAccountEntity = {
   updatedAt: Date;
   createdAt: Date;
   deletedAt: Date | null;
-  tutor: TTutorEntity | null;
+  tutor?: TTutorEntity | null;
+  student?: TStudentEntity | null;
   birthDay: string | null;
   hiddenBirthDay: boolean;
   phoneNumber: string | null;
