@@ -1,6 +1,7 @@
 import {
   BaseEntity,
   CUSTOMER_TYPE,
+  NOTIFICATION_TYPE,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
   REGISTER_METHOD,
@@ -122,4 +123,12 @@ export type TStudent = {
   hiddenBirthDay: boolean;
   phoneNumber?: string | null;
   hiddenPhoneNumber: boolean;
+} & BaseEntity;
+
+export type TNotificationEntity = {
+  title?: string;
+  content?: string;
+  type: NOTIFICATION_TYPE;
+  sender?: TAccountEntity | null;
+  receiver?: TAccountEntity | null;
 } & BaseEntity;
