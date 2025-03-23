@@ -73,6 +73,11 @@ export enum NOTIFICATION_TYPE {
   STANDARD = "STANDARD",
 }
 
+export enum NOTIFICATION_STATUS {
+  UNREAD = "UNREAD",
+  READ = "READ",
+}
+
 export enum REGISTERED_PROGRAM_STATUS {
   NEW = "NEW",
   TESTED = "TESTED",
@@ -82,4 +87,9 @@ export enum REGISTERED_PROGRAM_STATUS {
 
 export enum REFRESH_TYPE {
   NOTIFICATION = "NOTIFICATION",
+}
+
+export enum SORT_TYPE {
+  ASC = "ASC",
+  DESC = "DESC",
 }

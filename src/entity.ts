@@ -1,10 +1,12 @@
 import {
   BaseEntity,
   CUSTOMER_TYPE,
+  NOTIFICATION_STATUS,
   NOTIFICATION_TYPE,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
   REGISTER_METHOD,
+  REGISTERED_PROGRAM_STATUS,
   SCHOOL_STATUS,
 } from "./type";
 
@@ -28,11 +30,11 @@ export type TProgramEntity = {
 } & BaseEntity;
 
 export type TStudentEntity = {
-  district?: TDistrictEntity | null;
-  province?: TProvinceEntity | null;
-  birthDay?: Date | null;
+  district: TDistrictEntity | null | null;
+  province: TProvinceEntity | null | null;
+  birthDay: Date | null | null;
   hiddenBirthDay: boolean;
-  phoneNumber?: string | null;
+  phoneNumber: string | null | null;
   hiddenPhoneNumber: boolean;
   account: TAccountEntity;
 } & BaseEntity;
@@ -50,8 +52,8 @@ export type TAccountEntity = {
   updatedAt: Date;
   createdAt: Date;
   deletedAt: Date | null;
-  tutor?: TTutorEntity | null;
-  student?: TStudentEntity | null;
+  tutor: TTutorEntity | null | null;
+  student: TStudentEntity | null | null;
   birthDay: string | null;
   hiddenBirthDay: boolean;
   phoneNumber: string | null;
@@ -62,27 +64,27 @@ export type TAdministrativeRegionEntity = {
   id: number;
   name: string;
   nameEn: string;
-  codeName?: string;
-  codeNameEn?: string;
+  codeName: string | null;
+  codeNameEn: string | null;
 };
 
 export type TAdministrativeUnitEntity = {
   id: number;
-  fullName?: string;
-  fullNameEn?: string;
-  shortName?: string;
-  shortNameEn?: string;
-  codeName?: string;
-  codeNameEn?: string;
+  fullName: string | null;
+  fullNameEn: string | null;
+  shortName: string | null;
+  shortNameEn: string | null;
+  codeName: string | null;
+  codeNameEn: string | null;
 };
 
 export type TProvinceEntity = {
   code: string;
   name: string;
-  nameEn?: string;
+  nameEn: string | null;
   fullName: string;
-  fullNameEn?: string;
-  codeName?: string;
+  fullNameEn: string | null;
+  codeName: string | null;
   administrativeRegion: TAdministrativeRegionEntity;
   administrativeUnit: TAdministrativeUnitEntity;
 };
@@ -90,45 +92,59 @@ export type TProvinceEntity = {
 export type TDistrictEntity = {
   code: string;
   name: string;
-  nameEn?: string;
-  fullName?: string;
-  fullNameEn?: string;
-  codeName?: string;
+  nameEn: string | null;
+  fullName: string | null;
+  fullNameEn: string | null;
+  codeName: string | null;
   province: TProvinceEntity;
   administrativeUnit: TAdministrativeUnitEntity;
 };
 
 export type TTutorEntity = {
-  introduction?: string;
-  shortVideoUrl?: string;
-  schoolName?: string;
-  schoolStatus?: SCHOOL_STATUS;
+  introduction: string | null;
+  shortVideoUrl: string | null;
+  schoolName: string | null;
+  schoolStatus: SCHOOL_STATUS | null;
   hiddenSchool: boolean;
-  district?: TDistrictEntity;
-  province?: TProvinceEntity;
-  workAt?: string;
-  birthDay?: string;
-  hiddenBirthDay?: boolean;
-  phoneNumber?: string;
-  hiddenPhoneNumber?: boolean;
+  district: TDistrictEntity | null;
+  province: TProvinceEntity | null;
+  workAt: string | null;
+  birthDay: string | null;
+  hiddenBirthDay: boolean | null;
+  phoneNumber: string | null;
+  hiddenPhoneNumber: boolean | null;
   hiddenWorkAt: boolean;
   account: TAccountEntity;
 } & BaseEntity;
 
 export type TStudent = {
   account: TAccountEntity;
-  district?: TDistrictEntity | null;
-  province?: TProvinceEntity | null;
-  birthDay?: string | null;
+  district: TDistrictEntity | null | null;
+  province: TProvinceEntity | null | null;
+  birthDay: string | null | null;
   hiddenBirthDay: boolean;
-  phoneNumber?: string | null;
+  phoneNumber: string | null | null;
   hiddenPhoneNumber: boolean;
 } & BaseEntity;
 
 export type TNotificationEntity = {
-  title?: string;
-  content?: string;
+  title: string | null;
+  content: string | null;
   type: NOTIFICATION_TYPE;
-  sender?: TAccountEntity | null;
-  receiver?: TAccountEntity | null;
+  sender: TAccountEntity | null;
+  status: NOTIFICATION_STATUS;
+  receiver: TAccountEntity | null;
 } & BaseEntity;
+
+export type TRegisteredProgramEntity = {
+  status: REGISTERED_PROGRAM_STATUS;
+  note: string | null;
+  studentNote: string | null;
+  studentPhoneNumber: string;
+  studentProgramMethodDesired: PROGRAM_METHOD | null;
+  studentProvince: TProvinceEntity | null;
+  studentDistrict: TDistrictEntity | null;
+  addressStudent: string | null;
+  studentInterestedProgram: TProgramEntity;
+  registeredStudent: TAccountEntity;
+};

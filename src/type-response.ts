@@ -1,3 +1,4 @@
+import { TRegisteredProgramEntity } from "./entity";
 import { CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
 
 export type AccountSignInResponse = {
@@ -30,3 +31,5 @@ export type AccountPostMeResponse = {
   avatar: string | null;
   providerId: string;
 };
+
+export type TRegisteredProgramCreateRes = TRegisteredProgramEntity;
