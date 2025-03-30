@@ -1,4 +1,9 @@
-import { PROGRAM_METHOD } from "./type";
+import {
+  BasePaginationParams,
+  PROGRAM_METHOD,
+  REGISTERED_PROGRAM_STATUS,
+  SORT_TYPE,
+} from "./type";
 
 export type TRegisteredProgramCreatePost = {
   studentNote?: string;
@@ -9,3 +14,10 @@ export type TRegisteredProgramCreatePost = {
   addressStudent?: string;
   studentInterestedProgramId: string;
 };
+
+export type TRegisteredProgramListSentMeDTO = {
+  status?: REGISTERED_PROGRAM_STATUS;
+  sortCreatedAt?: SORT_TYPE;
+  programId?: string;
+  studentName?: string;
+} & BasePaginationParams;

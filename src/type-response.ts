@@ -33,3 +33,10 @@ export type AccountPostMeResponse = {
 };
 
 export type TRegisteredProgramCreateRes = TRegisteredProgramEntity;
+
+export type TRegisteredProgramListSentMeRes = {
+  registeredPrograms: TRegisteredProgramEntity[];
+  total: number;
+};
+
+export type TProgramRegisteredMeTutorEditRes = TRegisteredProgramEntity;

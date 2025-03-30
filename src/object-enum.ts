@@ -6,6 +6,7 @@ import {
   REGISTER_METHOD,
   REGISTERED_PROGRAM_STATUS,
   SCHOOL_STATUS,
+  SORT_TYPE,
 } from "./type";
 
 export const OBJECT_REGISTER_METHOD = {
@@ -146,5 +147,15 @@ export const OBJECT_REGISTERED_PROGRAM_STATUS = {
   [REGISTERED_PROGRAM_STATUS.REJECTED]: {
     value: REGISTERED_PROGRAM_STATUS.REJECTED,
     label: "Từ chối",
+  },
+};
+export const OBJECT_SORT_TYPE = {
+  [SORT_TYPE.ASC]: {
+    value: SORT_TYPE.ASC,
+    label: "Tăng dần",
+  },
+  [SORT_TYPE.DESC]: {
+    value: SORT_TYPE.DESC,
+    label: "Giảm dần",
   },
 };
