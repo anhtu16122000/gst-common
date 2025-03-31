@@ -1,4 +1,5 @@
 import {
+  CLASS_STATUS,
   CUSTOMER_TYPE,
   GENDER,
   PROGRAM_METHOD,
@@ -157,5 +158,31 @@ export const OBJECT_SORT_TYPE = {
   [SORT_TYPE.DESC]: {
     value: SORT_TYPE.DESC,
     label: "Giảm dần",
+  },
+};
+
+// export enum CLASS_STATUS {
+//   HAPPENING = "HAPPENING",
+//   PENDING = "PENDING",
+//   FINISHED = "FINISHED",
+
+// }
+
+export const OBJECT_CLASS_STATUS = {
+  [CLASS_STATUS.WAIT_FOR_ACCEPTING]: {
+    value: CLASS_STATUS.WAIT_FOR_ACCEPTING,
+    label: "Đợi học viên phản hồi",
+  },
+  [CLASS_STATUS.HAPPENING]: {
+    value: CLASS_STATUS.HAPPENING,
+    label: "Đang học",
+  },
+  [CLASS_STATUS.PENDING]: {
+    value: CLASS_STATUS.PENDING,
+    label: "Tạm ngưng",
+  },
+  [CLASS_STATUS.FINISHED]: {
+    value: CLASS_STATUS.FINISHED,
+    label: "Hoàn thành",
   },
 };

@@ -1,4 +1,8 @@
-import { TRegisteredProgramEntity } from "./entity";
+import {
+  TClassEntity,
+  TProgramEntity,
+  TRegisteredProgramEntity,
+} from "./entity";
 import { CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
 
 export type AccountSignInResponse = {
@@ -40,3 +44,9 @@ export type TRegisteredProgramListSentMeRes = {
 };
 
 export type TProgramRegisteredMeTutorEditRes = TRegisteredProgramEntity;
+export type TClassMeCreateRes = TClassEntity;
+
+export type TProgramOptionsMeRes = {
+  programs: Pick<TProgramEntity, "id" | "name">[];
+  count: number;
+};

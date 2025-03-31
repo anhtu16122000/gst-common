@@ -1,5 +1,6 @@
 import {
   BaseEntity,
+  CLASS_STATUS,
   CUSTOMER_TYPE,
   NOTIFICATION_STATUS,
   NOTIFICATION_TYPE,
@@ -147,4 +148,15 @@ export type TRegisteredProgramEntity = {
   addressStudent: string | null;
   studentInterestedProgram: TProgramEntity;
   registeredStudent: TAccountEntity;
-};
+  class: TClassEntity | null;
+} & BaseEntity;
+
+export type TClassEntity = {
+  name: string;
+  note: string | null;
+  status: CLASS_STATUS;
+  program: TProgramEntity;
+  registeredProgram: TRegisteredProgramEntity | null;
+  student: TAccountEntity | null;
+  tutor: TAccountEntity;
+} & BaseEntity;

@@ -21,3 +21,13 @@ export type TRegisteredProgramListSentMeDTO = {
   programId?: string;
   studentName?: string;
 } & BasePaginationParams;
+
+export type TClassMeCreate = {
+  name: string;
+  programId: string;
+  registeredProgramId: string;
+  studentId: string;
+  note?: string;
+};
+
+export type TProgramOptionsMe = {} & BasePaginationParams;
