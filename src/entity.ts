@@ -2,6 +2,7 @@ import {
   BaseEntity,
   CLASS_STATUS,
   CUSTOMER_TYPE,
+  LESSON_ACTIVITY_STATUS,
   NOTIFICATION_STATUS,
   NOTIFICATION_TYPE,
   PROGRAM_METHOD,
@@ -159,4 +160,15 @@ export type TClassEntity = {
   registeredProgram: TRegisteredProgramEntity | null;
   student: TAccountEntity | null;
   tutor: TAccountEntity;
+} & BaseEntity;
+
+export type TLessonEntity = {
+  startTime: string;
+  endTime: string;
+  status: LESSON_ACTIVITY_STATUS | null;
+  note: string;
+  hasApproved: boolean;
+  hasPaid: boolean;
+  fee: number;
+  class: TClassEntity;
 } & BaseEntity;

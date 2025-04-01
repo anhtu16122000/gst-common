@@ -1,5 +1,6 @@
 import {
   TClassEntity,
+  TLessonEntity,
   TProgramEntity,
   TRegisteredProgramEntity,
 } from "./entity";
@@ -50,3 +51,24 @@ export type TProgramOptionsMeRes = {
   programs: Pick<TProgramEntity, "id" | "name">[];
   count: number;
 };
+
+export type TLessonRequestRes = TLessonEntity[];
+export type TLesson = {
+  startTime: string;
+  endTime: string;
+  classId: string;
+  className: string;
+};
+
+export type TLessonRequestFailedOverlappedData = {
+  type: TLessonRequestResFailType;
+  conflicts: Record<
+    string,
+    {
+      newLesson: Omit<TLesson, "classId" | "className">;
+      conflictingLessons: TLesson[];
+    }
+  >;
+};
+
+export type TLessonRequestResFailType = "OVERLAPPED";

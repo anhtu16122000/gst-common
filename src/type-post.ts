@@ -1,5 +1,6 @@
 import {
   BasePaginationParams,
+  CLASS_STATUS,
   PROGRAM_METHOD,
   REGISTERED_PROGRAM_STATUS,
   SORT_TYPE,
@@ -31,3 +32,14 @@ export type TClassMeCreate = {
 };
 
 export type TProgramOptionsMe = {} & BasePaginationParams;
+
+export type TClassMeList = {
+  status?: CLASS_STATUS;
+  programId?: string;
+  name?: string;
+} & BasePaginationParams;
+
+export type TLessonRequest = {
+  classId: string;
+  lessons: { startTime: string; endTime: string; note?: string; fee: number }[];
+};

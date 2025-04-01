@@ -44,8 +44,8 @@ export type BaseEntity = {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
-  createdBy?: TAccountEntity;
-  updatedBy?: TAccountEntity;
+  createdBy: TAccountEntity | null;
+  updatedBy: TAccountEntity | null;
 };
 
 export type DATA_THIRD_PARTY_LOGIN = {
@@ -99,4 +99,9 @@ export enum CLASS_STATUS {
   HAPPENING = "HAPPENING",
   PENDING = "PENDING",
   FINISHED = "FINISHED",
+}
+
+export enum LESSON_ACTIVITY_STATUS {
+  CANCELED = "CANCELED",
+  COMPLETED = "COMPLETED",
 }
