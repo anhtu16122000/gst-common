@@ -1,6 +1,7 @@
 import {
   CLASS_STATUS,
   CUSTOMER_TYPE,
+  DAY_OF_WEEK,
   GENDER,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
@@ -184,5 +185,36 @@ export const OBJECT_CLASS_STATUS = {
   [CLASS_STATUS.FINISHED]: {
     value: CLASS_STATUS.FINISHED,
     label: "Hoàn thành",
+  },
+};
+
+export const OBJECT_DAY_OF_WEEK = {
+  [DAY_OF_WEEK.MONDAY]: {
+    value: DAY_OF_WEEK.MONDAY,
+    label: "Thứ hai",
+  },
+  [DAY_OF_WEEK.TUESDAY]: {
+    value: DAY_OF_WEEK.TUESDAY,
+    label: "Thứ ba",
+  },
+  [DAY_OF_WEEK.WEDNESDAY]: {
+    value: DAY_OF_WEEK.WEDNESDAY,
+    label: "Thứ tư",
+  },
+  [DAY_OF_WEEK.THURSDAY]: {
+    value: DAY_OF_WEEK.THURSDAY,
+    label: "Thứ năm",
+  },
+  [DAY_OF_WEEK.FRIDAY]: {
+    value: DAY_OF_WEEK.FRIDAY,
+    label: "Thứ sáu",
+  },
+  [DAY_OF_WEEK.SATURDAY]: {
+    value: DAY_OF_WEEK.SATURDAY,
+    label: "Thứ bảy",
+  },
+  [DAY_OF_WEEK.SUNDAY]: {
+    value: DAY_OF_WEEK.SUNDAY,
+    label: "Chủ nhật",
   },
 };

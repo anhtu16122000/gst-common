@@ -71,4 +71,25 @@ export type TLessonRequestFailedOverlappedData = {
   >;
 };
 
-export type TLessonRequestResFailType = "OVERLAPPED";
+enum TLessonRequestResFailType {
+  OVERLAPPED = "OVERLAPPED",
+}
+
+export type TLessonListMeTutorRes = {
+  lessons: TLessonEntity[];
+  total: number;
+};
+
+export type TClassMeDetailRes = Omit<TClassEntity, "tutor">;
+export type TLessonPrepareRes = {
+  id: string;
+  startTime: string;
+  endTime: string;
+  overlapItems: {
+    id: string;
+    startTime: string;
+    endTime: string;
+    classId: string;
+    className: string;
+  }[];
+}[];

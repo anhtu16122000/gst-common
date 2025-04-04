@@ -2,6 +2,7 @@ import {
   BaseEntity,
   CLASS_STATUS,
   CUSTOMER_TYPE,
+  DAY_OF_WEEK,
   LESSON_ACTIVITY_STATUS,
   NOTIFICATION_STATUS,
   NOTIFICATION_TYPE,
@@ -160,6 +161,7 @@ export type TClassEntity = {
   registeredProgram: TRegisteredProgramEntity | null;
   student: TAccountEntity | null;
   tutor: TAccountEntity;
+  learningTimes: TClassLearningTimeEntity[];
 } & BaseEntity;
 
 export type TLessonEntity = {
@@ -170,5 +172,12 @@ export type TLessonEntity = {
   hasApproved: boolean;
   hasPaid: boolean;
   fee: number;
+  class: TClassEntity;
+} & BaseEntity;
+
+export type TClassLearningTimeEntity = {
+  dayOfWeek: DAY_OF_WEEK;
+  startTime: string;
+  endTime: string;
   class: TClassEntity;
 } & BaseEntity;
