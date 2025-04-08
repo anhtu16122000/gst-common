@@ -3,6 +3,7 @@ import {
   CUSTOMER_TYPE,
   DAY_OF_WEEK,
   GENDER,
+  LESSON_ACTIVITY_STATUS,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
   REGISTER_METHOD,
@@ -216,5 +217,19 @@ export const OBJECT_DAY_OF_WEEK = {
   [DAY_OF_WEEK.SUNDAY]: {
     value: DAY_OF_WEEK.SUNDAY,
     label: "Chủ nhật",
+  },
+};
+export const OBJECT_LESSON_ACTIVITY_STATUS = {
+  [LESSON_ACTIVITY_STATUS.NEW]: {
+    value: LESSON_ACTIVITY_STATUS.NEW,
+    label: "Chưa học",
+  },
+  [LESSON_ACTIVITY_STATUS.COMPLETED]: {
+    value: LESSON_ACTIVITY_STATUS.COMPLETED,
+    label: "Đã học",
+  },
+  [LESSON_ACTIVITY_STATUS.CANCELED]: {
+    value: LESSON_ACTIVITY_STATUS.CANCELED,
+    label: "Đã huỷ",
   },
 };

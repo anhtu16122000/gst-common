@@ -155,6 +155,7 @@ export type TRegisteredProgramEntity = {
 
 export type TClassEntity = {
   name: string;
+  feePerLesson: number | null;
   note: string | null;
   status: CLASS_STATUS;
   program: TProgramEntity;

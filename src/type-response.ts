@@ -85,6 +85,7 @@ export type TLessonPrepareRes = {
   id: string;
   startTime: string;
   endTime: string;
+  fee: number;
   overlapItems: {
     id: string;
     startTime: string;
@@ -93,3 +94,7 @@ export type TLessonPrepareRes = {
     className: string;
   }[];
 }[];
+export type TLessonCheckOverlapRes = TLessonEntity[];
+
+export type TLessonRequestSingleRes = TLessonEntity;
+export type TLessonEditRes = TLessonEntity;

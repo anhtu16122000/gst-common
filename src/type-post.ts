@@ -45,10 +45,16 @@ export type TClassMeList = {
   programId?: string;
   name?: string;
 } & BasePaginationParams;
+export type TLessonRequestDTO = {
+  startTime: string;
+  endTime: string;
+  note?: string;
+  fee: number;
+};
 
 export type TLessonRequest = {
   classId: string;
-  lessons: { startTime: string; endTime: string; note?: string; fee: number }[];
+  lessons: TLessonRequestDTO[];
 };
 
 export type TLessonListMeTutor = {
@@ -66,6 +72,7 @@ export type TLessonPrepare = {
     startTime: string;
     endTime: string;
   };
+  fee: number;
   numberOfLesson?: number;
   startDate?: string;
   classLearningTimes?: {
@@ -73,4 +80,12 @@ export type TLessonPrepare = {
     endTime: string;
     dayOfWeek: DAY_OF_WEEK;
   }[];
+};
+
+export type TLessonRequestSingle = { classId: string } & TLessonRequestDTO;
+
+export type TLessonCheckOverlap = {
+  exceptedLessonId?: string;
+  startTime: string;
+  endTime: string;
 };
