@@ -182,3 +182,7 @@ export type TClassLearningTimeEntity = {
   endTime: string;
   class: TClassEntity;
 } & BaseEntity;
+
+export type TClassNotificationEntity = {
+  description: string;
+} & BaseEntity;

@@ -1,5 +1,6 @@
 import {
   TClassEntity,
+  TClassNotificationEntity,
   TLessonEntity,
   TProgramEntity,
   TRegisteredProgramEntity,
@@ -94,7 +95,75 @@ export type TLessonPrepareRes = {
     className: string;
   }[];
 }[];
-export type TLessonCheckOverlapRes = TLessonEntity[];
+export type TLessonCheckOverlapRes = {
+  overlapLessons: TLessonEntity[];
+  extendOverlapLessons: { startTime: string; endTime: string }[];
+};
 
 export type TLessonRequestSingleRes = TLessonEntity;
 export type TLessonEditRes = TLessonEntity;
+
+export type TDeletableLessonsRes = {
+  deletableLessons: Omit<TLessonEntity, "class">[];
+  total: number;
+};
+
+export type TDeleteDeletableLessonsRes = {
+  deletedCount: number;
+};
+
+export type TCLassStatisticRes = {
+  total: number;
+  totalCompleted: number;
+  totalNew: number;
+  totalCancelled: number;
+  totalConfirmed: number;
+  totalPaid: number;
+  totalUnconfirmed: number;
+  totalUnpaid: number;
+  totalFee: number;
+  totalCompletedFee: number;
+  totalNewFee: number;
+  totalCancelledFee: number;
+  totalConfirmedFee: number;
+  totalPaidFee: number;
+  totalUnconfirmedFee: number;
+  totalUnpaidFee: number;
+};
+
+export type TClassNotificationCreateRes = TClassNotificationEntity;
+export type TClassNotificationUpdateRes = TClassNotificationEntity;
+export type TClassNotificationListRes = {
+  classNotifications: Omit<TClassNotificationEntity, "class">[];
+  total: number;
+};
+
+export type TClassMeListRes = {
+  classes: Omit<TClassEntity, "registeredProgram" | "learningTimes">[];
+  total: number;
+};
+
+export type TClassCountStatusRes = {
+  total: number;
+  totalFinish: number;
+  totalHappening: number;
+  totalPending: number;
+  totalWaitingForAccepting: number;
+};
+export type TRegisteredProgramCountStatusRes = {
+  total: number;
+  totalAccepted: number;
+  totalRejected: number;
+  totalNew: number;
+  totalTested: number;
+};
+
+export type TClassSelectOptionsRes = {
+  id: string;
+  name: string;
+  student: {
+    id: string;
+    fullname: string;
+    avatar: string;
+  };
+}[];

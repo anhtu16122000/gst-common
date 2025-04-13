@@ -149,7 +149,7 @@ export const OBJECT_REGISTERED_PROGRAM_STATUS = {
   },
   [REGISTERED_PROGRAM_STATUS.REJECTED]: {
     value: REGISTERED_PROGRAM_STATUS.REJECTED,
-    label: "Từ chối",
+    label: "Đã huỷ",
   },
 };
 export const OBJECT_SORT_TYPE = {

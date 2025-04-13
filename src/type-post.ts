@@ -84,8 +84,31 @@ export type TLessonPrepare = {
 
 export type TLessonRequestSingle = { classId: string } & TLessonRequestDTO;
 
+export type TExtendLessonTimesDTO = {
+  startTime: string;
+  endTime: string;
+};
 export type TLessonCheckOverlap = {
   exceptedLessonId?: string;
   startTime: string;
   endTime: string;
+  extendLessonTimes?: TExtendLessonTimesDTO[];
 };
+
+export type TCLassStatistic = {
+  classId: string;
+  startTime?: string;
+  endTime?: string;
+};
+
+export type TClassNotificationCreate = {
+  classId: string;
+  description: string;
+};
+export type TClassNotificationUpdate = {
+  id: string;
+} & Omit<TClassNotificationCreate, "classId">;
+
+export type TClassNotificationList = {
+  classId: string;
+} & BasePaginationParams;
