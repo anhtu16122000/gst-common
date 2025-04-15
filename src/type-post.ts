@@ -112,3 +112,8 @@ export type TClassNotificationUpdate = {
 export type TClassNotificationList = {
   classId: string;
 } & BasePaginationParams;
+
+export type TTutorListStudents = {
+  fullname?: string;
+  createdAtSort?: SORT_TYPE;
+} & BasePaginationParams;

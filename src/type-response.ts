@@ -5,7 +5,7 @@ import {
   TProgramEntity,
   TRegisteredProgramEntity,
 } from "./entity";
-import { CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
+import { CLASS_STATUS, CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
 
 export type AccountSignInResponse = {
   accessToken: string;
@@ -167,3 +167,22 @@ export type TClassSelectOptionsRes = {
     avatar: string;
   };
 }[];
+
+export type TClassUpdateRes = TClassEntity;
+
+export type TTutorListStudentsRes = {
+  students: {
+    studentId: string;
+    studentName: string;
+    lastJoinedAt: string;
+    studentAvatar: string | null;
+    phoneNumber: string | null;
+    classes: {
+      classId: string;
+      className: string;
+      classStatus: CLASS_STATUS;
+      classCreatedAt: string;
+    }[];
+  }[];
+  total: number;
+};
