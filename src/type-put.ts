@@ -1,5 +1,14 @@
-import { CLASS_STATUS, DAY_OF_WEEK, REGISTERED_PROGRAM_STATUS } from "./type";
-import { TClassMeCreate, TLessonRequestSingle } from "./type-post";
+import {
+  CLASS_STATUS,
+  CLASS_STATUS_STUDENT_EDIT,
+  DAY_OF_WEEK,
+  REGISTERED_PROGRAM_STATUS,
+} from "./type";
+import {
+  TClassMeCreate,
+  TLessonRequestSingle,
+  TProposedLearningCreate,
+} from "./type-post";
 
 export type TProgramRegisteredMeTutorEdit = {
   id: string;
@@ -20,3 +29,15 @@ export type ClassLearningTimeDTO = {
 export type TClassUpdate = {
   status?: CLASS_STATUS;
 } & Partial<Omit<TClassMeCreate, "studentId" | "registeredProgramId">>;
+
+export type TClassStudentChangeStatus = {
+  status: CLASS_STATUS_STUDENT_EDIT;
+};
+
+export type TLessonConfirm = {
+  lessonIds: string[];
+};
+
+export type TProposedLearningEdit = {
+  id: string;
+} & Partial<Omit<TProposedLearningCreate, "classId">>;

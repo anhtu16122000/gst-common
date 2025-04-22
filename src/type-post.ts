@@ -117,3 +117,52 @@ export type TTutorListStudents = {
   fullname?: string;
   createdAtSort?: SORT_TYPE;
 } & BasePaginationParams;
+
+export type TClassStudentList = {
+  status?: CLASS_STATUS;
+  name?: string;
+} & BasePaginationParams;
+
+export type TLessonStudentList = {
+  classId: string;
+  fromDate: string;
+  toDate: string;
+} & BasePaginationParams;
+
+export type TCLassStudentStatistic = {
+  classId: string;
+  startTime?: string;
+  endTime?: string;
+};
+
+export type TClassNotificationStudentList = {
+  classId: string;
+} & BasePaginationParams;
+
+export type TClassCountStatus = {
+  name?: string;
+};
+
+export type TRegisteredProgramCountStatus = {
+  studentName?: string;
+};
+
+export type TClassStudentCountStatus = {
+  name?: string;
+};
+
+export type TProposedLearningCreate = {
+  classId: string;
+  title: string;
+  description?: string;
+  proposedLessonIds: string[];
+};
+
+export type TProposedLearningList = {
+  classId: string;
+  title?: string;
+} & BasePaginationParams;
+
+export type TProposedLearningDetail = {
+  id: string;
+};

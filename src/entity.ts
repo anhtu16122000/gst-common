@@ -132,6 +132,7 @@ export type TStudent = {
 
 export type TNotificationEntity = {
   title: string | null;
+  link: string | null;
   content: string | null;
   type: NOTIFICATION_TYPE;
   sender: TAccountEntity | null;
@@ -185,4 +186,15 @@ export type TClassLearningTimeEntity = {
 
 export type TClassNotificationEntity = {
   description: string;
+} & BaseEntity;
+
+export type TProposedLearningLessonEntity = {
+  proposedLearningLesson: TProposedLearningEntity;
+  lesson: TLessonEntity;
+} & BaseEntity;
+
+export type TProposedLearningEntity = {
+  class: TClassEntity;
+  title: string;
+  description: string | null;
 } & BaseEntity;

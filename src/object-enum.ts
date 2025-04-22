@@ -187,6 +187,10 @@ export const OBJECT_CLASS_STATUS = {
     value: CLASS_STATUS.FINISHED,
     label: "Hoàn thành",
   },
+  [CLASS_STATUS.CANCELED]: {
+    value: CLASS_STATUS.CANCELED,
+    label: "Đã huỷ",
+  },
 };
 
 export const OBJECT_DAY_OF_WEEK = {

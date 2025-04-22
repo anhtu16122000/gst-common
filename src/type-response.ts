@@ -3,6 +3,8 @@ import {
   TClassNotificationEntity,
   TLessonEntity,
   TProgramEntity,
+  TProposedLearningEntity,
+  TProposedLearningLessonEntity,
   TRegisteredProgramEntity,
 } from "./entity";
 import { CLASS_STATUS, CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
@@ -82,6 +84,7 @@ export type TLessonListMeTutorRes = {
 };
 
 export type TClassMeDetailRes = Omit<TClassEntity, "tutor">;
+export type TClassStudentDetailRes = Omit<TClassEntity, "student">;
 export type TLessonPrepareRes = {
   id: string;
   startTime: string;
@@ -129,6 +132,25 @@ export type TCLassStatisticRes = {
   totalPaidFee: number;
   totalUnconfirmedFee: number;
   totalUnpaidFee: number;
+  totalHourCompleted: number;
+};
+export type TCLassStudentStatisticRes = {
+  total: number;
+  totalCompleted: number;
+  totalNew: number;
+  totalCancelled: number;
+  totalConfirmed: number;
+  totalPaid: number;
+  totalUnconfirmed: number;
+  totalUnpaid: number;
+  totalFee: number;
+  totalCompletedFee: number;
+  totalNewFee: number;
+  totalCancelledFee: number;
+  totalConfirmedFee: number;
+  totalPaidFee: number;
+  totalUnconfirmedFee: number;
+  totalUnpaidFee: number;
 };
 
 export type TClassNotificationCreateRes = TClassNotificationEntity;
@@ -149,6 +171,15 @@ export type TClassCountStatusRes = {
   totalHappening: number;
   totalPending: number;
   totalWaitingForAccepting: number;
+  totalCancelled: number;
+};
+export type TClassStudentCountStatusRes = {
+  total: number;
+  totalFinish: number;
+  totalHappening: number;
+  totalPending: number;
+  totalWaitingForAccepting: number;
+  totalCancelled: number;
 };
 export type TRegisteredProgramCountStatusRes = {
   total: number;
@@ -185,4 +216,60 @@ export type TTutorListStudentsRes = {
     }[];
   }[];
   total: number;
+};
+
+export type TProgramStudentCheckAllowRegister = {
+  timeAllow: string | null;
+  maxCreateAt: string | null;
+  allow: boolean;
+};
+
+export type TClassStudentListRes = {
+  classes: TClassEntity[];
+  count: number;
+};
+
+export type TLessonStudentListRes = {
+  lessons: TLessonEntity[];
+  total: number;
+};
+
+export type TClassStudentChangeStatusRes = TClassEntity;
+
+export type TLessonListUnconfirmedRes = TLessonEntity[];
+
+export type TLessonConfirmRes = number;
+
+export type TClassNotificationStudentListRes = {
+  classNotifications: TClassNotificationEntity[];
+  total: number;
+};
+export type TCompletedAndNotPaidLessonsRes = (TLessonEntity & {
+  proposedLearningLesson: TProposedLearningLessonEntity & {
+    proposedLearning: TProposedLearningEntity;
+  };
+})[];
+
+export type TProposedLearningCreateRes = TProposedLearningEntity;
+
+export type TProposedLearningListRes = {
+  list: (TProposedLearningEntity & {
+    hasPaid: boolean;
+    totalLessons: number;
+    totalTuition: number;
+  })[];
+  total: number;
+};
+
+export type TProposedLearningDetailRes = TProposedLearningEntity & {
+  class: TClassEntity;
+  hasPaid: boolean;
+  totalLessons: number;
+  totalTuition: number;
+  lessons: TLessonEntity[];
+};
+
+export type TProposedLearningEditRes = TProposedLearningEntity & {
+  class: TClassEntity;
+  proposedLearningLessons?: TProposedLearningLessonEntity[];
 };
