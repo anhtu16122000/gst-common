@@ -162,7 +162,19 @@ export type TProposedLearningList = {
   classId: string;
   title?: string;
 } & BasePaginationParams;
+export type TProposedLearningStudentList = {
+  classId: string;
+  title?: string;
+} & BasePaginationParams;
 
 export type TProposedLearningDetail = {
   id: string;
+};
+export type TProposedLearningStudentDetail = {
+  id: string;
+};
+
+export type TClassStatisticGroupByMonth = {
+  classId: string;
+  numberOfYear: number;
 };

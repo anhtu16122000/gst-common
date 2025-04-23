@@ -79,7 +79,9 @@ enum TLessonRequestResFailType {
 }
 
 export type TLessonListMeTutorRes = {
-  lessons: TLessonEntity[];
+  lessons: (TLessonEntity & {
+    proposedLearningLesson: TProposedLearningLessonEntity;
+  })[];
   total: number;
 };
 
@@ -151,6 +153,7 @@ export type TCLassStudentStatisticRes = {
   totalPaidFee: number;
   totalUnconfirmedFee: number;
   totalUnpaidFee: number;
+  totalHourCompleted: number;
 };
 
 export type TClassNotificationCreateRes = TClassNotificationEntity;
@@ -260,8 +263,23 @@ export type TProposedLearningListRes = {
   })[];
   total: number;
 };
+export type TProposedLearningStudentListRes = {
+  list: (TProposedLearningEntity & {
+    hasPaid: boolean;
+    totalLessons: number;
+    totalTuition: number;
+  })[];
+  total: number;
+};
 
 export type TProposedLearningDetailRes = TProposedLearningEntity & {
+  class: TClassEntity;
+  hasPaid: boolean;
+  totalLessons: number;
+  totalTuition: number;
+  lessons: TLessonEntity[];
+};
+export type TProposedLearningStudentDetailRes = TProposedLearningEntity & {
   class: TClassEntity;
   hasPaid: boolean;
   totalLessons: number;
@@ -273,3 +291,10 @@ export type TProposedLearningEditRes = TProposedLearningEntity & {
   class: TClassEntity;
   proposedLearningLessons?: TProposedLearningLessonEntity[];
 };
+
+export type TClassStatisticGroupByMonthRes = {
+  month: number;
+  totalCompletedHours: number;
+  totalCompleted: number;
+  totalCompletedTuition: number;
+}[];
