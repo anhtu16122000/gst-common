@@ -2,6 +2,7 @@ import {
   CLASS_STATUS,
   CLASS_STATUS_STUDENT_EDIT,
   DAY_OF_WEEK,
+  LESSON_ACTIVITY_STATUS,
   REGISTERED_PROGRAM_STATUS,
 } from "./type";
 import {
@@ -18,6 +19,7 @@ export type TProgramRegisteredMeTutorEdit = {
 
 export type TLessonEdit = {
   id: string;
+  status?: LESSON_ACTIVITY_STATUS;
 } & Omit<Partial<TLessonRequestSingle>, "classId">;
 
 export type ClassLearningTimeDTO = {

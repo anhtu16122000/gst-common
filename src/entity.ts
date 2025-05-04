@@ -198,3 +198,18 @@ export type TProposedLearningEntity = {
   title: string;
   description: string | null;
 } & BaseEntity;
+
+export type TFileLessonEntity = {
+  url: string;
+  name: string;
+  size: number;
+} & BaseEntity;
+export type TDocumentsEntity = {
+  order: number;
+} & BaseEntity;
+
+export type TFileEntity = {
+  url: string;
+  name: string;
+  size: number;
+} & BaseEntity;

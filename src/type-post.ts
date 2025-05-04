@@ -124,7 +124,7 @@ export type TClassStudentList = {
 } & BasePaginationParams;
 
 export type TLessonStudentList = {
-  classId: string;
+  classId?: string;
   fromDate: string;
   toDate: string;
 } & BasePaginationParams;
@@ -177,4 +177,26 @@ export type TProposedLearningStudentDetail = {
 export type TClassStatisticGroupByMonth = {
   classId: string;
   numberOfYear: number;
+};
+export type TClassStudentStatisticGroupByMonth = {
+  classId: string;
+  numberOfYear: number;
+};
+
+export type TDocumentUpload = {
+  file: any;
+  programId: string;
+};
+
+export type TDocumentList = {
+  search?: string;
+  programId?: string;
+} & BasePaginationParams;
+
+export type TDocumentChangeOrder = {
+  programId: string;
+  documents: {
+    documentId: string;
+    order: number;
+  }[];
 };

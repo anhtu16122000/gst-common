@@ -1,6 +1,9 @@
 import {
   TClassEntity,
   TClassNotificationEntity,
+  TDocumentsEntity,
+  TFileEntity,
+  TFileLessonEntity,
   TLessonEntity,
   TProgramEntity,
   TProposedLearningEntity,
@@ -201,6 +204,15 @@ export type TClassSelectOptionsRes = {
     avatar: string;
   };
 }[];
+export type TClassStudentSelectOptionsRes = {
+  id: string;
+  name: string;
+  tutor: {
+    id: string;
+    fullname: string;
+    avatar: string;
+  };
+}[];
 
 export type TClassUpdateRes = TClassEntity;
 
@@ -252,6 +264,11 @@ export type TCompletedAndNotPaidLessonsRes = (TLessonEntity & {
     proposedLearning: TProposedLearningEntity;
   };
 })[];
+export type TLessonStudentCompletedAndNotPaidLessonsRes = (TLessonEntity & {
+  proposedLearningLesson: TProposedLearningLessonEntity & {
+    proposedLearning: TProposedLearningEntity;
+  };
+})[];
 
 export type TProposedLearningCreateRes = TProposedLearningEntity;
 
@@ -298,3 +315,49 @@ export type TClassStatisticGroupByMonthRes = {
   totalCompleted: number;
   totalCompletedTuition: number;
 }[];
+export type TClassStudentStatisticGroupByMonthRes = {
+  month: number;
+  totalCompletedHours: number;
+  totalCompleted: number;
+  totalCompletedTuition: number;
+}[];
+
+export type TLessonDetailRes = TLessonEntity & {
+  class: TClassEntity;
+  proposedLearningLesson: TProposedLearningLessonEntity;
+};
+export type TLessonStudentDetailRes = TLessonEntity & {
+  class: TClassEntity;
+  proposedLearningLesson: TProposedLearningLessonEntity;
+};
+
+export type TFileLessonUploadRes = TFileLessonEntity & {
+  lesson: TLessonEntity;
+};
+
+export type TFileLessonListRes = TFileLessonEntity[];
+
+export type TFileLessonStudentListRes = TFileLessonEntity[];
+
+export type TDocumentUploadRes = TDocumentsEntity & {
+  file: TFileEntity;
+};
+
+export type TDocumentDeleteFileRes = TDocumentsEntity;
+
+export type TDocumentListRes = {
+  documents: (TDocumentsEntity & {
+    program: TProgramEntity;
+    file: TFileEntity;
+  })[];
+  total: number;
+};
+
+export type TDocumentProgramListRes = {
+  id: string;
+  name: string;
+  totalFile: number;
+  totalSize: number;
+}[];
+
+export type TDocumentChangeOrderRes = TDocumentsEntity[];
