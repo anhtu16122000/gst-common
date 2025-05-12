@@ -43,3 +43,12 @@ export type TLessonConfirm = {
 export type TProposedLearningEdit = {
   id: string;
 } & Partial<Omit<TProposedLearningCreate, "classId">>;
+
+export type TFileUpdate = {
+  name: string;
+  id: string;
+};
+export type TFileLessonUpdate = {
+  name: string;
+  id: string;
+};

@@ -4,10 +4,15 @@ import {
   TDocumentsEntity,
   TFileEntity,
   TFileLessonEntity,
+  TGroupQuestionEntity,
   TLessonEntity,
   TProgramEntity,
   TProposedLearningEntity,
   TProposedLearningLessonEntity,
+  TQuestionEntity,
+  TQuestionTypeChoiceEntity,
+  TQuestionTypeEssayEntity,
+  TQuestionTypeWordArrangementEntity,
   TRegisteredProgramEntity,
 } from "./entity";
 import { CLASS_STATUS, CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
@@ -348,7 +353,9 @@ export type TDocumentDeleteFileRes = TDocumentsEntity;
 export type TDocumentListRes = {
   documents: (TDocumentsEntity & {
     program: TProgramEntity;
-    file: TFileEntity;
+    file: TFileEntity | null;
+    groupQuestion: TGroupQuestionEntity | null;
+    totalQuestion: number;
   })[];
   total: number;
 };
@@ -361,3 +368,42 @@ export type TDocumentProgramListRes = {
 }[];
 
 export type TDocumentChangeOrderRes = TDocumentsEntity[];
+
+export type TGroupQuestionCreateRes = TGroupQuestionEntity;
+
+export type TDocumentCreateGroupQuestionRes = TGroupQuestionEntity;
+export type TLessonCreateGroupQuestionRes = TGroupQuestionEntity;
+
+export type TGroupQuestionDeleteGroupQuestion = TGroupQuestionEntity & {
+  questions: TQuestionEntity &
+    {
+      choices: TQuestionTypeChoiceEntity[];
+      essays: TQuestionTypeEssayEntity[];
+      wordArrangements: TQuestionTypeWordArrangementEntity[];
+    }[];
+};
+export type TGroupQuestionDetailRes = TGroupQuestionEntity & {
+  questions: TQuestionEntity &
+    {
+      choices: TQuestionTypeChoiceEntity[];
+      essays: TQuestionTypeEssayEntity[];
+      wordArrangements: TQuestionTypeWordArrangementEntity[];
+    }[];
+};
+
+export type TGroupQuestionUpdateRes = TGroupQuestionEntity;
+
+export type TLessonImportRes = TLessonEntity & {
+  groupQuestions: TGroupQuestionEntity[];
+  fileLessons: TFileLessonEntity[];
+};
+export type TLessonDocumentsRes = TLessonEntity & {
+  fileLessons: TFileLessonEntity[];
+  groupQuestions: (Pick<TGroupQuestionEntity, "id" | "title"> & {
+    totalQuestion: number;
+  })[];
+  totalQuestion: number;
+};
+
+export type TFileUpdateRes = TFileEntity;
+export type TFileLessonUpdateRes = TFileLessonEntity;

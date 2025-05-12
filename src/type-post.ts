@@ -3,6 +3,7 @@ import {
   CLASS_STATUS,
   DAY_OF_WEEK,
   PROGRAM_METHOD,
+  QUESTION_TYPES,
   REGISTERED_PROGRAM_STATUS,
   SORT_TYPE,
 } from "./type";
@@ -199,4 +200,42 @@ export type TDocumentChangeOrder = {
     documentId: string;
     order: number;
   }[];
+};
+
+export type TGroupQuestionCreate = {
+  title: string;
+  content: string;
+  questions: {
+    content?: string;
+    order: number;
+    type: QUESTION_TYPES;
+    wordArrangement?: {
+      content: string;
+      sortOrder: number;
+      correctOrder: number;
+    }[];
+    choices?: {
+      content: string;
+      isCorrect: boolean;
+    }[];
+    essay?: { correctAnswer: string }[];
+  }[];
+};
+
+export type TDocumentCreateGroupQuestion = {
+  programId: string;
+  groupQuestion: TGroupQuestionCreate;
+};
+export type LessonCreateGroupQuestion = {
+  lessonId: string;
+  groupQuestion: TGroupQuestionCreate;
+};
+
+export type TGroupQuestionUpdate = {
+  id: string;
+} & Partial<TGroupQuestionCreate>;
+
+export type TLessonImport = {
+  lessonId: string;
+  documentIds: string[];
 };

@@ -8,6 +8,7 @@ import {
   NOTIFICATION_TYPE,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
+  QUESTION_TYPES,
   REGISTER_METHOD,
   REGISTERED_PROGRAM_STATUS,
   SCHOOL_STATUS,
@@ -212,4 +213,27 @@ export type TFileEntity = {
   url: string;
   name: string;
   size: number;
+} & BaseEntity;
+
+export type TGroupQuestionEntity = {
+  title: string;
+  content: string;
+} & BaseEntity;
+export type TQuestionEntity = {
+  content: string;
+  order: number;
+  type: QUESTION_TYPES;
+} & BaseEntity;
+
+export type TQuestionTypeChoiceEntity = {
+  content: string;
+  isCorrect: boolean;
+} & BaseEntity;
+export type TQuestionTypeEssayEntity = {
+  correctAnswer: string;
+} & BaseEntity;
+export type TQuestionTypeWordArrangementEntity = {
+  content: string;
+  sortOrder: number;
+  correctOrder: number;
 } & BaseEntity;
