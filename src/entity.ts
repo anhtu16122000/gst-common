@@ -12,6 +12,7 @@ import {
   REGISTER_METHOD,
   REGISTERED_PROGRAM_STATUS,
   SCHOOL_STATUS,
+  SESSION_GROUP_QUESTION,
 } from "./type";
 
 export type TProgramSuitableLearnerEntity = {
@@ -236,4 +237,30 @@ export type TQuestionTypeWordArrangementEntity = {
   content: string;
   sortOrder: number;
   correctOrder: number;
+} & BaseEntity;
+
+export type TSessionGroupQuestionEntity = {
+  finishedAt: string;
+  totalQuestion: number;
+  correctQuestion: number;
+  status: SESSION_GROUP_QUESTION;
+} & BaseEntity;
+
+export type TAnswerQuestionEntity = {
+  answerText: string;
+} & BaseEntity;
+
+export type TAnswerChoiceEntity = {} & BaseEntity;
+
+export type TAnswerWordArrangementEntity = {
+  chosenOrder: number;
+} & BaseEntity;
+export type TEditorEntity = {
+  title: string;
+  content: string;
+} & BaseEntity;
+
+export type TProgramRatingEntity = {
+  score: number;
+  comment: string;
 } & BaseEntity;

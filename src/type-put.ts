@@ -52,3 +52,9 @@ export type TFileLessonUpdate = {
   name: string;
   id: string;
 };
+
+export type TEditorUpdate = {
+  id: string;
+  title?: string;
+  content?: string;
+};

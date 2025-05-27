@@ -1,12 +1,16 @@
 import {
+  TAccountEntity,
+  TAnswerQuestionEntity,
   TClassEntity,
   TClassNotificationEntity,
   TDocumentsEntity,
+  TEditorEntity,
   TFileEntity,
   TFileLessonEntity,
   TGroupQuestionEntity,
   TLessonEntity,
   TProgramEntity,
+  TProgramRatingEntity,
   TProposedLearningEntity,
   TProposedLearningLessonEntity,
   TQuestionEntity,
@@ -14,8 +18,14 @@ import {
   TQuestionTypeEssayEntity,
   TQuestionTypeWordArrangementEntity,
   TRegisteredProgramEntity,
+  TSessionGroupQuestionEntity,
 } from "./entity";
-import { CLASS_STATUS, CUSTOMER_TYPE, REGISTER_METHOD } from "./type";
+import {
+  CLASS_STATUS,
+  CUSTOMER_TYPE,
+  REGISTER_METHOD,
+  SESSION_GROUP_QUESTION,
+} from "./type";
 
 export type AccountSignInResponse = {
   accessToken: string;
@@ -167,7 +177,20 @@ export type TCLassStudentStatisticRes = {
 export type TClassNotificationCreateRes = TClassNotificationEntity;
 export type TClassNotificationUpdateRes = TClassNotificationEntity;
 export type TClassNotificationListRes = {
-  classNotifications: Omit<TClassNotificationEntity, "class">[];
+  classNotifications: (Omit<TClassNotificationEntity, "class"> & {
+    file: TFileEntity | null;
+    editor: TEditorEntity | null;
+    groupQuestion:
+      | (TGroupQuestionEntity & {
+          totalQuestion: number;
+          sessionGroupQuestionsLastCreatedAt: string | null;
+          sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+          sessionGroupQuestionId: string | null;
+          sessionGroupQuestionsCorrectQuestion: number | null;
+          sessionGroupQuestionsTotalQuestion: number | null;
+        })
+      | null;
+  })[];
   total: number;
 };
 
@@ -261,9 +284,23 @@ export type TLessonListUnconfirmedRes = TLessonEntity[];
 export type TLessonConfirmRes = number;
 
 export type TClassNotificationStudentListRes = {
-  classNotifications: TClassNotificationEntity[];
+  classNotifications: (Omit<TClassNotificationEntity, "class"> & {
+    file: TFileEntity | null;
+    editor: TEditorEntity | null;
+    groupQuestion:
+      | (TGroupQuestionEntity & {
+          totalQuestion: number;
+          sessionGroupQuestionsLastCreatedAt: string | null;
+          sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+          sessionGroupQuestionId: string | null;
+          sessionGroupQuestionsCorrectQuestion: number | null;
+          sessionGroupQuestionsTotalQuestion: number | null;
+        })
+      | null;
+  })[];
   total: number;
 };
+
 export type TCompletedAndNotPaidLessonsRes = (TLessonEntity & {
   proposedLearningLesson: TProposedLearningLessonEntity & {
     proposedLearning: TProposedLearningEntity;
@@ -319,6 +356,8 @@ export type TClassStatisticGroupByMonthRes = {
   totalCompletedHours: number;
   totalCompleted: number;
   totalCompletedTuition: number;
+  totalPaidFee: number;
+  totalUnpaidFee: number;
 }[];
 export type TClassStudentStatisticGroupByMonthRes = {
   month: number;
@@ -355,6 +394,7 @@ export type TDocumentListRes = {
     program: TProgramEntity;
     file: TFileEntity | null;
     groupQuestion: TGroupQuestionEntity | null;
+    editor: TEditorEntity | null;
     totalQuestion: number;
   })[];
   total: number;
@@ -365,6 +405,8 @@ export type TDocumentProgramListRes = {
   name: string;
   totalFile: number;
   totalSize: number;
+  totalEditor: number;
+  totalGroupQuestion: number;
 }[];
 
 export type TDocumentChangeOrderRes = TDocumentsEntity[];
@@ -393,17 +435,149 @@ export type TGroupQuestionDetailRes = TGroupQuestionEntity & {
 
 export type TGroupQuestionUpdateRes = TGroupQuestionEntity;
 
-export type TLessonImportRes = TLessonEntity & {
-  groupQuestions: TGroupQuestionEntity[];
-  fileLessons: TFileLessonEntity[];
-};
+export type TLessonImportRes = TLessonEntity & {};
 export type TLessonDocumentsRes = TLessonEntity & {
   fileLessons: TFileLessonEntity[];
+  editors: TEditorEntity[];
   groupQuestions: (Pick<TGroupQuestionEntity, "id" | "title"> & {
     totalQuestion: number;
+    sessionGroupQuestionsLastCreatedAt: string | null;
+    sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+    sessionGroupQuestionId: string | null;
+    sessionGroupQuestionsCorrectQuestion: number | null;
+    sessionGroupQuestionsTotalQuestion: number | null;
+  })[];
+  totalQuestion: number;
+};
+export type TLessonStudentDocumentsRes = TLessonEntity & {
+  fileLessons: TFileLessonEntity[];
+  editors: TEditorEntity[];
+  groupQuestions: (Pick<TGroupQuestionEntity, "id" | "title"> & {
+    totalQuestion: number;
+    sessionGroupQuestionsLastCreatedAt: string | null;
+    sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+    sessionGroupQuestionId: string | null;
+    sessionGroupQuestionsCorrectQuestion: number | null;
+    sessionGroupQuestionsTotalQuestion: number | null;
   })[];
   totalQuestion: number;
 };
 
 export type TFileUpdateRes = TFileEntity;
 export type TFileLessonUpdateRes = TFileLessonEntity;
+export type TGroupQuestionStudentStartDoingRes = TSessionGroupQuestionEntity & {
+  student: TAccountEntity;
+  createdBy: TAccountEntity;
+  groupQuestion: TGroupQuestionEntity;
+};
+export type TGroupQuestionStudentLessonFinishDoingRes =
+  TSessionGroupQuestionEntity;
+
+export type TGroupQuestionStudentResultRes = TSessionGroupQuestionEntity & {
+  groupQuestion: TGroupQuestionEntity & {
+    questions: (TQuestionEntity & {
+      choices: (TQuestionTypeChoiceEntity & { isChosen: boolean })[];
+      essays: TQuestionTypeEssayEntity[];
+      wordArrangements: (TQuestionTypeWordArrangementEntity & {
+        chosenOrder: number;
+      })[];
+      answers: TAnswerQuestionEntity[];
+      answerText?: string;
+    })[];
+  };
+};
+export type TGroupQuestionResultRes = TSessionGroupQuestionEntity & {
+  groupQuestion: TGroupQuestionEntity & {
+    questions: (TQuestionEntity & {
+      choices: (TQuestionTypeChoiceEntity & { isChosen: boolean })[];
+      essays: TQuestionTypeEssayEntity[];
+      wordArrangements: (TQuestionTypeWordArrangementEntity & {
+        chosenOrder: number;
+      })[];
+      answers: TAnswerQuestionEntity[];
+      answerText?: string;
+    })[];
+  };
+};
+export type TGroupQuestionStudentDraftRes = TSessionGroupQuestionEntity;
+
+export type TDocumentCreateEditorRes = TDocumentsEntity & {
+  editor: TEditorEntity;
+  program: TProgramEntity;
+};
+
+export type TDocumentDeleteEditorRes = TDocumentsEntity & {
+  editor: TEditorEntity;
+};
+
+export type TEditorUpdateRes = TEditorEntity;
+
+export type TLessonCreateEditorRes = TEditorEntity & {
+  lesson: TLessonEntity;
+};
+
+export type TEditorDeleteRes = TEditorEntity;
+export type TEditorDetailRes = TEditorEntity;
+export type TEditorStudentDetailRes = TEditorEntity;
+
+export type TClassNotificationImportRes = TClassNotificationEntity;
+export type TClassNotificationAddGroupQuestionRes = TClassNotificationEntity;
+export type TClassNotificationCreateEditorRes = TClassNotificationEntity;
+
+export type TClassNotificationUploadRes = TClassNotificationEntity;
+
+export type TFileDeleteRes = TFileEntity;
+
+export type TLessonAllDocumentsRes = {
+  lessons: (Omit<TLessonEntity, "class"> & {
+    fileLessons: TFileLessonEntity[];
+    editors: TEditorEntity[];
+    groupQuestions: (TGroupQuestionEntity & {
+      totalQuestion: number;
+      sessionGroupQuestionsLastCreatedAt: string | null;
+      sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+      sessionGroupQuestionId: string | null;
+      sessionGroupQuestionsCorrectQuestion: number | null;
+      sessionGroupQuestionsTotalQuestion: number | null;
+    })[];
+  })[];
+  total: number;
+};
+export type TLessonStudentAllDocumentsRes = {
+  lessons: (Omit<TLessonEntity, "class"> & {
+    fileLessons: TFileLessonEntity[];
+    editors: TEditorEntity[];
+    groupQuestions: (TGroupQuestionEntity & {
+      totalQuestion: number;
+      sessionGroupQuestionsLastCreatedAt: string | null;
+      sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+      sessionGroupQuestionId: string | null;
+      sessionGroupQuestionsCorrectQuestion: number | null;
+      sessionGroupQuestionsTotalQuestion: number | null;
+    })[];
+  })[];
+  total: number;
+};
+
+export type TClassStatisticGroupByClassRes = {
+  classId: string;
+  className: string;
+  totalCompletedHours: number;
+  totalCompleted: number;
+  totalCompletedTuition: number;
+  totalPaidFee: number;
+  totalUnpaidFee: number;
+}[];
+export type TClassStudentStatisticGroupByClassRes = {
+  classId: string;
+  className: string;
+  totalCompletedHours: number;
+  totalCompleted: number;
+  totalCompletedTuition: number;
+  totalPaidFee: number;
+  totalUnpaidFee: number;
+}[];
+
+export type TProgramRatingStudentCreateRatingRes = TProgramRatingEntity;
+export type TProgramRatingStudentUpdateRatingRes = TProgramRatingEntity;
+export type TProgramRatingStudentDeleteRatingRes = TProgramRatingEntity;

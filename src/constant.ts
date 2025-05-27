@@ -12,3 +12,6 @@ export const COMMON_ROUTES = {
 };
 
 export const REGISTER_PROGRAM_TIME = 12 * 60 * 60; // limit 12 hours per a registering program
+
+export const AT_LEAST_ALLOW_RATING_PROGRAM_HOUR = 1;
+export const AT_LEAST_ALLOW_RATING_PROGRAM_LESSONS = 1;

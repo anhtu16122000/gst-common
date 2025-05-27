@@ -246,7 +246,7 @@ export const OBJECT_QUESTION_TYPES = {
   },
   [QUESTION_TYPES.ESSAY]: {
     value: QUESTION_TYPES.ESSAY,
-    label: "Tự luận",
+    label: "Điền từ",
   },
   [QUESTION_TYPES.WORD_ARRANGEMENT]: {
     value: QUESTION_TYPES.WORD_ARRANGEMENT,

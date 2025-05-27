@@ -97,7 +97,7 @@ export type TLessonCheckOverlap = {
 };
 
 export type TCLassStatistic = {
-  classId: string;
+  classId?: string;
   startTime?: string;
   endTime?: string;
 };
@@ -112,6 +112,7 @@ export type TClassNotificationUpdate = {
 
 export type TClassNotificationList = {
   classId: string;
+  search?: string;
 } & BasePaginationParams;
 
 export type TTutorListStudents = {
@@ -131,13 +132,14 @@ export type TLessonStudentList = {
 } & BasePaginationParams;
 
 export type TCLassStudentStatistic = {
-  classId: string;
+  classId?: string;
   startTime?: string;
   endTime?: string;
 };
 
 export type TClassNotificationStudentList = {
   classId: string;
+  search?: string;
 } & BasePaginationParams;
 
 export type TClassCountStatus = {
@@ -176,17 +178,18 @@ export type TProposedLearningStudentDetail = {
 };
 
 export type TClassStatisticGroupByMonth = {
-  classId: string;
+  classId?: string;
   numberOfYear: number;
 };
 export type TClassStudentStatisticGroupByMonth = {
-  classId: string;
+  classId?: string;
   numberOfYear: number;
 };
 
 export type TDocumentUpload = {
   file: any;
   programId: string;
+  name: string;
 };
 
 export type TDocumentList = {
@@ -226,7 +229,7 @@ export type TDocumentCreateGroupQuestion = {
   programId: string;
   groupQuestion: TGroupQuestionCreate;
 };
-export type LessonCreateGroupQuestion = {
+export type TLessonCreateGroupQuestion = {
   lessonId: string;
   groupQuestion: TGroupQuestionCreate;
 };
@@ -239,3 +242,82 @@ export type TLessonImport = {
   lessonId: string;
   documentIds: string[];
 };
+
+export type TSubmitGroupQuestion = {
+  questionId: string;
+  choices?: {
+    id: string;
+  }[];
+  wordArrangements?: {
+    id: string;
+    chosenOrder: number;
+  }[];
+  essay?: { essay: string };
+}[];
+export type TGroupQuestionStudentFinishDoing = {
+  sessionGroupQuestionId: string;
+  answers: TSubmitGroupQuestion;
+};
+export type TGroupQuestionStudentDraft = {
+  sessionGroupQuestionId: string;
+  answers: TSubmitGroupQuestion;
+};
+
+export type TDocumentCreateEditor = {
+  programId: string;
+  title: string;
+  content: string;
+};
+
+export type TLessonCreateEditor = {
+  lessonId: string;
+} & Omit<TDocumentCreateEditor, "programId">;
+export type TClassNotificationImport = {
+  classId: string;
+  documentIds: string[];
+};
+export type TClassNotificationAddGroupQuestion = {
+  classId: string;
+  groupQuestion: TGroupQuestionCreate;
+};
+
+export type TClassNotificationCreateEditor = {
+  classId: string;
+} & Omit<TDocumentCreateEditor, "programId">;
+export type TClassNotificationUpload = {
+  file: any;
+  fileName: string;
+};
+export type TFileLessonUpload = {
+  file: any;
+  fileName: string;
+};
+
+export type TLessonAllDocuments = {
+  search?: string;
+  classId: string;
+} & BasePaginationParams;
+export type TLessonStudentAllDocuments = {
+  search?: string;
+  classId: string;
+} & BasePaginationParams;
+
+export type TClassStatisticGroupByClass = {
+  numberOfYear: number;
+  monthOfYear: number;
+};
+export type TClassStudentStatisticGroupByClass = {
+  numberOfYear: number;
+  monthOfYear: number;
+};
+
+export type TProgramRatingStudentCreateRating = {
+  classId: string;
+  score: number;
+  comment: string;
+  fileIds?: string[];
+};
+
+export type TProgramRatingStudentUpdateRating = {
+  id: string;
+} & Partial<Omit<TProgramRatingStudentCreateRating, "classId">>;
