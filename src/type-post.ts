@@ -2,6 +2,7 @@ import {
   BasePaginationParams,
   CLASS_STATUS,
   DAY_OF_WEEK,
+  POST_TYPE,
   PROGRAM_METHOD,
   QUESTION_TYPES,
   REGISTERED_PROGRAM_STATUS,
@@ -321,3 +322,58 @@ export type TProgramRatingStudentCreateRating = {
 export type TProgramRatingStudentUpdateRating = {
   id: string;
 } & Partial<Omit<TProgramRatingStudentCreateRating, "classId">>;
+
+export type TProgramRatingUpload = {
+  name: string;
+  file: any;
+};
+
+export type TProgramRatingPublicList = {
+  programId: string;
+  score?: number;
+} & BasePaginationParams;
+
+export type TProgramRatingStudentHasRated = {
+  programId?: string;
+};
+
+export type TProgramRatingStudentCanRate = {
+  programId?: string;
+};
+export type TPostAllCreateDiscussion = {
+  title: string;
+  content?: string;
+  fileIds?: string[];
+};
+
+export type TPostAllUpdateDiscussion = {
+  id: string;
+} & Partial<TPostAllCreateDiscussion>;
+
+export type TPostAllUpload = {
+  name: string;
+  file: any;
+};
+
+export type TPostAllMyPost = {
+  type?: POST_TYPE;
+} & BasePaginationParams;
+
+export type TPostAllComment = {
+  content: string;
+  postId: string;
+};
+
+export type TPostAllReplyComment = {
+  content: string;
+  commentId: string;
+};
+
+export type TPostAllRemoveUpvote = {
+  postId: string;
+};
+
+export type TPostPublicListComment = {
+  postId?: string;
+  commentId?: string;
+};

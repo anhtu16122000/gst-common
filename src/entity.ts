@@ -6,6 +6,7 @@ import {
   LESSON_ACTIVITY_STATUS,
   NOTIFICATION_STATUS,
   NOTIFICATION_TYPE,
+  POST_TYPE,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
   QUESTION_TYPES,
@@ -263,4 +264,14 @@ export type TEditorEntity = {
 export type TProgramRatingEntity = {
   score: number;
   comment: string;
+} & BaseEntity;
+
+export type TPostEntity = {
+  title: string;
+  content?: string;
+  type: POST_TYPE;
+} & BaseEntity;
+
+export type TPostCommentEntity = {
+  content: string;
 } & BaseEntity;

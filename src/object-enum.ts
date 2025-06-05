@@ -4,6 +4,7 @@ import {
   DAY_OF_WEEK,
   GENDER,
   LESSON_ACTIVITY_STATUS,
+  POST_TYPE,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
   QUESTION_TYPES,
@@ -251,5 +252,39 @@ export const OBJECT_QUESTION_TYPES = {
   [QUESTION_TYPES.WORD_ARRANGEMENT]: {
     value: QUESTION_TYPES.WORD_ARRANGEMENT,
     label: "Sắp xếp từ",
+  },
+};
+
+export const OBJECT_RATING = {
+  1: {
+    value: 1,
+    label: "Chưa tốt",
+  },
+  2: {
+    value: 2,
+    label: "Bình thường",
+  },
+  3: {
+    value: 3,
+    label: "Khá tốt",
+  },
+  4: {
+    value: 4,
+    label: "Tốt",
+  },
+  5: {
+    value: 5,
+    label: "Xuất xắc",
+  },
+};
+
+export const OBJECT_POST_TYPE = {
+  [POST_TYPE.DOCUMENT_SHARE]: {
+    value: POST_TYPE.DOCUMENT_SHARE,
+    label: "Chia sẻ tài liệu",
+  },
+  [POST_TYPE.DISCUSSION]: {
+    value: POST_TYPE.DISCUSSION,
+    label: "Bài thảo luận",
   },
 };

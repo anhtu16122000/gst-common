@@ -9,6 +9,8 @@ import {
   TFileLessonEntity,
   TGroupQuestionEntity,
   TLessonEntity,
+  TPostCommentEntity,
+  TPostEntity,
   TProgramEntity,
   TProgramRatingEntity,
   TProposedLearningEntity,
@@ -581,3 +583,90 @@ export type TClassStudentStatisticGroupByClassRes = {
 export type TProgramRatingStudentCreateRatingRes = TProgramRatingEntity;
 export type TProgramRatingStudentUpdateRatingRes = TProgramRatingEntity;
 export type TProgramRatingStudentDeleteRatingRes = TProgramRatingEntity;
+
+export type TProgramRatingUploadRes = TFileEntity;
+
+export type TProgramRatingPublicListRes = {
+  programRatings: (TProgramRatingEntity & {
+    files: TFileEntity[];
+    class: TClassEntity & {
+      totalHourCompleted: number;
+      totalLessonCompleted: number;
+    };
+  })[];
+  total: number;
+};
+
+export type TProgramRatingPublicCountByScoreRes = {
+  scoreTotal: number;
+  score1: number;
+  score2: number;
+  score3: number;
+  score4: number;
+  score5: number;
+};
+
+export type TProgramRatingStudentHasRatedRes = (TProgramRatingEntity & {
+  files: TFileEntity[];
+  class: TClassEntity & {
+    totalHourCompleted: number;
+    totalLessonCompleted: number;
+  };
+  program: TProgramEntity;
+})[];
+
+export type TProgramRatingStudentCanRateRes = (TClassEntity & {
+  program: TProgramEntity;
+})[];
+
+export type TPostAllCreateDiscussionRes = TPostEntity;
+export type TPostAllUpdateDiscussionRes = TPostEntity;
+
+export type TPostAllUploadRes = TFileEntity;
+
+export type TPostAllMyPostRes = {
+  total: number;
+  posts: (TPostEntity & {
+    files: TFileEntity[];
+    totalUpvote: number;
+    hasUpvoted: boolean;
+  })[];
+};
+
+export type TPostAllCommentRes = TPostCommentEntity & {
+  createdBy: TAccountEntity;
+  post: TPostEntity;
+};
+export type TPostAllReplyCommentRes = TPostCommentEntity & {
+  createdBy: TAccountEntity;
+  parent: TPostCommentEntity;
+};
+
+export type TPostPublicListCommentRes = {
+  comments: {
+    postComment_id: string;
+    postComment_createdAt: string; // ISO date string
+    postComment_updatedAt: string; // ISO date string
+    postComment_deletedAt: string | null;
+    postComment_content: string;
+    postComment_createdById: string;
+    postComment_updatedById: string | null;
+    postComment_postId: string;
+    postComment_parentId: string | null;
+
+    createdBy_id: string;
+    createdBy_fullname: string;
+    createdBy_avatar: string;
+    createdBy_type: string;
+    createdBy_registerMethod: string;
+    createdBy_username: string;
+    createdBy_providerId: string | null;
+    createdBy_updatedAt: string; // ISO date string
+    createdBy_createdAt: string; // ISO date string
+    createdBy_deletedAt: string | null;
+
+    replyCount: string; // This looks like a count but is string type in your data
+    upvoteCount: string;
+  }[];
+  total: number;
+};
