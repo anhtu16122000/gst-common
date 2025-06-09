@@ -21,6 +21,8 @@ import {
   TQuestionTypeWordArrangementEntity,
   TRegisteredProgramEntity,
   TSessionGroupQuestionEntity,
+  TStudentEntity,
+  TTutorEntity,
 } from "./entity";
 import {
   CLASS_STATUS,
@@ -643,30 +645,43 @@ export type TPostAllReplyCommentRes = TPostCommentEntity & {
 };
 
 export type TPostPublicListCommentRes = {
-  comments: {
-    postComment_id: string;
-    postComment_createdAt: string; // ISO date string
-    postComment_updatedAt: string; // ISO date string
-    postComment_deletedAt: string | null;
-    postComment_content: string;
-    postComment_createdById: string;
-    postComment_updatedById: string | null;
-    postComment_postId: string;
-    postComment_parentId: string | null;
-
-    createdBy_id: string;
-    createdBy_fullname: string;
-    createdBy_avatar: string;
-    createdBy_type: string;
-    createdBy_registerMethod: string;
-    createdBy_username: string;
-    createdBy_providerId: string | null;
-    createdBy_updatedAt: string; // ISO date string
-    createdBy_createdAt: string; // ISO date string
-    createdBy_deletedAt: string | null;
-
-    replyCount: string; // This looks like a count but is string type in your data
-    upvoteCount: string;
-  }[];
+  comments: (TPostCommentEntity & {
+    upvoteCount: number;
+    replyCount: number;
+    hasUpvoted: boolean;
+    createdBy: TAccountEntity;
+    updatedBy: TAccountEntity;
+  })[];
   total: number;
+};
+
+export type TPostPublicNewFeedsRes = {
+  posts: (TPostEntity & {
+    totalUpvote: number;
+    totalComments: number;
+    hasUpvoted: boolean;
+    files: TFileEntity[];
+    createdBy: TAccountEntity;
+    updatedBy: TAccountEntity;
+  })[];
+  total: number;
+};
+
+export type TPostAllCommentUpdateRes = TPostCommentEntity & {
+  updatedBy: TAccountEntity;
+};
+
+export type TPostAllCommentDeleteRes = TPostCommentEntity;
+
+export type TAccountPublicPreviewRes = TAccountEntity & {
+  tutor: TTutorEntity | null;
+  student: TStudentEntity | null;
+};
+
+export type TAccountPublicListFollowerRes = TAccountEntity & {
+  followers: TAccountEntity[];
+};
+
+export type TAccountPublicListFollowingRes = TAccountEntity & {
+  following: TAccountEntity[];
 };

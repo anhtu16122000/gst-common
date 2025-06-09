@@ -107,6 +107,8 @@ export type TDistrictEntity = {
 };
 
 export type TTutorEntity = {
+  totalTeachingHours: number;
+  totalSessions: number;
   introduction: string | null;
   shortVideoUrl: string | null;
   schoolName: string | null;

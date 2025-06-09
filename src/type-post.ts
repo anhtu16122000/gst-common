@@ -376,4 +376,14 @@ export type TPostAllRemoveUpvote = {
 export type TPostPublicListComment = {
   postId?: string;
   commentId?: string;
+} & BasePaginationParams;
+export type TPostPublicNewFeeds = {} & BasePaginationParams;
+
+export type TPostAllCommentUpdate = {
+  commentId: string;
+  content: string;
+};
+
+export type TAccountFollow = {
+  followerIds: string[];
 };
