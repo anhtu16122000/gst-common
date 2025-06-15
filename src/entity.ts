@@ -227,6 +227,8 @@ export type TQuestionEntity = {
   content: string;
   order: number;
   type: QUESTION_TYPES;
+  explainContent: string;
+  showExplain: boolean;
 } & BaseEntity;
 
 export type TQuestionTypeChoiceEntity = {

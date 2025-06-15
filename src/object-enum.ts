@@ -253,6 +253,14 @@ export const OBJECT_QUESTION_TYPES = {
     value: QUESTION_TYPES.WORD_ARRANGEMENT,
     label: "Sắp xếp từ",
   },
+  [QUESTION_TYPES.SPEAKING]: {
+    value: QUESTION_TYPES.SPEAKING,
+    label: "Nói",
+  },
+  [QUESTION_TYPES.TEXT]: {
+    value: QUESTION_TYPES.TEXT,
+    label: "Tiêu đề",
+  },
 };
 
 export const OBJECT_RATING = {

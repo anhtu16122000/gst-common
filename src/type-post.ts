@@ -210,6 +210,10 @@ export type TGroupQuestionCreate = {
   title: string;
   content: string;
   questions: {
+    explain: {
+      content: string;
+      show: boolean;
+    };
     content?: string;
     order: number;
     type: QUESTION_TYPES;
@@ -253,7 +257,8 @@ export type TSubmitGroupQuestion = {
     id: string;
     chosenOrder: number;
   }[];
-  essay?: { essay: string };
+  essay?: { essay?: string };
+  speaking?: { audioId?: string | null };
 }[];
 export type TGroupQuestionStudentFinishDoing = {
   sessionGroupQuestionId: string;
@@ -329,7 +334,8 @@ export type TProgramRatingUpload = {
 };
 
 export type TProgramRatingPublicList = {
-  programId: string;
+  programId?: string;
+  ownerProgramId?: string;
   score?: number;
 } & BasePaginationParams;
 
@@ -386,4 +392,19 @@ export type TPostAllCommentUpdate = {
 
 export type TAccountFollow = {
   followerIds: string[];
+};
+
+export type TPostAllListPostByAccount = {
+  accountId: string;
+  type?: POST_TYPE;
+} & BasePaginationParams;
+
+export type TProgramPublicList = {
+  search?: string;
+  accountId?: string;
+} & BasePaginationParams;
+
+export type TProgramRatingPublicCountByScore = {
+  programId?: string;
+  ownerProgramId?: string;
 };
