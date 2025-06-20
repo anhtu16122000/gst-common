@@ -1,4 +1,5 @@
 import {
+  ANSWER_QUESTION_TYPE,
   CLASS_STATUS,
   CUSTOMER_TYPE,
   DAY_OF_WEEK,
@@ -293,6 +294,21 @@ export const OBJECT_POST_TYPE = {
   },
   [POST_TYPE.DISCUSSION]: {
     value: POST_TYPE.DISCUSSION,
-    label: "Bài thảo luận",
+    label: "Thảo luận/Bài viết",
+  },
+};
+
+export const OBJECT_ANSWER_QUESTION_TYPE = {
+  [ANSWER_QUESTION_TYPE.RIGHT]: {
+    value: ANSWER_QUESTION_TYPE.RIGHT,
+    label: "Đúng",
+  },
+  [ANSWER_QUESTION_TYPE.WRONG]: {
+    value: ANSWER_QUESTION_TYPE.WRONG,
+    label: "Sai",
+  },
+  [ANSWER_QUESTION_TYPE.WAIT_FOR_GRADE]: {
+    value: ANSWER_QUESTION_TYPE.WAIT_FOR_GRADE,
+    label: "Chờ chấm",
   },
 };

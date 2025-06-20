@@ -1,4 +1,5 @@
 import {
+  ANSWER_QUESTION_TYPE,
   BasePaginationParams,
   CLASS_STATUS,
   DAY_OF_WEEK,
@@ -408,3 +409,17 @@ export type TProgramRatingPublicCountByScore = {
   programId?: string;
   ownerProgramId?: string;
 };
+
+export type TGroupQuestionSendFeedback = {
+  content: string;
+  answerQuestionId: string;
+};
+
+export type TGroupQuestionChangeAnswerQuestionType = {
+  answerQuestionId: string;
+  type: ANSWER_QUESTION_TYPE;
+};
+
+export type TProgramPublicLearnedProgram = {
+  studentAccountId: string;
+} & BasePaginationParams;

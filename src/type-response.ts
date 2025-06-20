@@ -22,7 +22,6 @@ import {
   TRegisteredProgramEntity,
   TSessionGroupQuestionEntity,
   TStudentEntity,
-  TTutorEntity,
 } from "./entity";
 import {
   ANSWER_QUESTION_TYPE,
@@ -487,6 +486,8 @@ export type TGroupQuestionStudentResultRes = TSessionGroupQuestionEntity & {
   groupQuestion: TGroupQuestionEntity & {
     questions: (TQuestionEntity & {
       answerType: ANSWER_QUESTION_TYPE;
+      feedbackContent: string | null;
+      answerQuestionId: string;
       choices: (TQuestionTypeChoiceEntity & { isChosen: boolean })[];
       essays: TQuestionTypeEssayEntity[];
       wordArrangements: (TQuestionTypeWordArrangementEntity & {
@@ -505,7 +506,9 @@ export type TGroupQuestionResultRes = TSessionGroupQuestionEntity & {
   groupQuestion: TGroupQuestionEntity & {
     questions: (TQuestionEntity & {
       file: TFileEntity;
+      feedbackContent: string | null;
       answerType: ANSWER_QUESTION_TYPE;
+      answerQuestionId: string;
       choices: (TQuestionTypeChoiceEntity & { isChosen: boolean })[];
       essays: TQuestionTypeEssayEntity[];
       wordArrangements: (TQuestionTypeWordArrangementEntity & {
@@ -691,10 +694,15 @@ export type TPostAllCommentUpdateRes = TPostCommentEntity & {
 
 export type TPostAllCommentDeleteRes = TPostCommentEntity;
 
-export type TAccountPublicPreviewRes = TAccountEntity & {
+export type TAccountPublicPreviewRes = Omit<TAccountEntity, "student"> & {
+  student:
+    | (TStudentEntity & {
+        totalProgram: number;
+      })
+    | null;
   hasFollowed: boolean;
-  tutor: TTutorEntity | null;
-  student: TStudentEntity | null;
+  totalFollower: number;
+  isMe: boolean;
 };
 
 export type TAccountPublicListFollowerRes = TAccountEntity & {
@@ -705,7 +713,12 @@ export type TAccountPublicListFollowingRes = TAccountEntity & {
   following: TAccountEntity[];
 };
 
-export type TAccountPublicDetailRes = TAccountEntity & {
+export type TAccountPublicDetailRes = Omit<TAccountEntity, "student"> & {
+  student:
+    | (TStudentEntity & {
+        totalProgram: number;
+      })
+    | null;
   hasFollowed: boolean;
   totalFollower: number;
   isMe: boolean;
@@ -731,4 +744,17 @@ export type TProgramPublicListRes = {
 
 export type TFileUploadCommonRes = TFileEntity & {
   createdBy: TAccountEntity;
+};
+export type TGroupQuestionSendFeedbackRes = TAnswerQuestionEntity;
+export type TGroupQuestionChangeAnswerQuestionTypeRes = TAnswerQuestionEntity;
+
+export type TProgramPublicLearnedProgramRes = {
+  programs: (TProgramEntity & {
+    account: TAccountEntity;
+    totalCompletedHours: number;
+    totalCompletedLessons: number;
+    classes: TClassEntity[];
+    latestClass: TClassEntity;
+  })[];
+  total: number;
 };

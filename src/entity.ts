@@ -43,6 +43,7 @@ export type TStudentEntity = {
   phoneNumber: string | null | null;
   hiddenPhoneNumber: boolean;
   account: TAccountEntity;
+  totalHourLearning: number;
 } & BaseEntity;
 
 export type TAccountEntity = {
@@ -253,6 +254,7 @@ export type TSessionGroupQuestionEntity = {
 
 export type TAnswerQuestionEntity = {
   answerText: string;
+  feedbackContent: string | null;
 } & BaseEntity;
 
 export type TAnswerChoiceEntity = {} & BaseEntity;
