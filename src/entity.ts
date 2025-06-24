@@ -44,6 +44,7 @@ export type TStudentEntity = {
   hiddenPhoneNumber: boolean;
   account: TAccountEntity;
   totalHourLearning: number;
+  introduction: string | null;
 } & BaseEntity;
 
 export type TAccountEntity = {
@@ -65,6 +66,7 @@ export type TAccountEntity = {
   hiddenBirthDay: boolean;
   phoneNumber: string | null;
   hiddenPhoneNumber: boolean;
+  hashedPin: string | null;
 };
 
 export type TAdministrativeRegionEntity = {
@@ -280,4 +282,22 @@ export type TPostEntity = {
 
 export type TPostCommentEntity = {
   content: string;
+} & BaseEntity;
+
+export type TBankEntity = {
+  name: string;
+  shortName: string;
+  code: string;
+  bin: string;
+  logo: string;
+  transferSupported: number;
+  lookupSupported: number;
+  support: number;
+  isTransfer: number;
+  swiftCode: string | null;
+} & BaseEntity;
+
+export type TAccountBankInfoEntity = {
+  bankNumber: string;
+  receiverName: string;
 } & BaseEntity;

@@ -1,6 +1,8 @@
 import {
+  TAccountBankInfoEntity,
   TAccountEntity,
   TAnswerQuestionEntity,
+  TBankEntity,
   TClassEntity,
   TClassNotificationEntity,
   TDocumentsEntity,
@@ -231,6 +233,7 @@ export type TRegisteredProgramCountStatusRes = {
 export type TClassSelectOptionsRes = {
   id: string;
   name: string;
+  status: CLASS_STATUS;
   student: {
     id: string;
     fullname: string;
@@ -651,6 +654,7 @@ export type TPostAllMyPostRes = {
   total: number;
   posts: (TPostEntity & {
     files: TFileEntity[];
+    totalComments: number;
     totalUpvote: number;
     hasUpvoted: boolean;
   })[];
@@ -757,4 +761,29 @@ export type TProgramPublicLearnedProgramRes = {
     latestClass: TClassEntity;
   })[];
   total: number;
+};
+
+export type TBankPublicListRes = TBankEntity[];
+
+export type TAccountForgotHashedPinRes = {
+  remainingSeconds: number;
+};
+
+export type TAccountEnterOTPForgotHashedPinRes = {
+  keyForgot: string;
+};
+
+export type TAccountBankInfoCreateRes = TAccountBankInfoEntity & {
+  account: TAccountEntity;
+  bank: TBankEntity;
+};
+
+export type TAccountBankInfoUpdateRes = TAccountBankInfoEntity & {
+  account: TAccountEntity;
+  bank: TBankEntity;
+};
+
+export type TAccountBankInfoCurrentRes = TAccountBankInfoEntity & {
+  account: TAccountEntity;
+  bank: TBankEntity;
 };

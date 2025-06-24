@@ -423,3 +423,39 @@ export type TGroupQuestionChangeAnswerQuestionType = {
 export type TProgramPublicLearnedProgram = {
   studentAccountId: string;
 } & BasePaginationParams;
+
+export type TClassSelectOptions = {
+  status?: CLASS_STATUS;
+};
+
+export type TBankPublicList = {
+  name?: string;
+};
+
+export type TAccountHashedPin = {
+  hashedPin: string;
+};
+
+export type TAccountChangeHashedPin = {
+  oldPin: string;
+  newPin: string;
+};
+
+export type TAccountEnterOTPForgotHashedPin = {
+  otp: string;
+};
+
+export type TChangeForgotHashedPin = {
+  keyForgot: string;
+  newHashedPin: string;
+};
+
+export type TAccountBankInfoCreate = {
+  bankNumber: string;
+  receiverName: string;
+  bankId: string;
+};
+
+export type TAccountBankInfoUpdate = {
+  id: string;
+} & Partial<TAccountBankInfoCreate>;

@@ -1,4 +1,4 @@
-import { PROGRAM_DETAIL_TABS } from "./type";
+import { CLASS_STATUS, PROGRAM_DETAIL_TABS } from "./type";
 
 export const OTP_RESEND_TIME = 20; // seconds
 export const COMMON_ROUTES = {
@@ -42,3 +42,12 @@ export const ACCEPTED_VIDEO_TYPES = [
   "video/x-matroska",
   "video/quicktime",
 ];
+export const CLASS_STATUS_ORDER = [
+  CLASS_STATUS.HAPPENING,
+  CLASS_STATUS.WAIT_FOR_ACCEPTING,
+  CLASS_STATUS.PENDING,
+  CLASS_STATUS.FINISHED,
+  CLASS_STATUS.CANCELED,
+];
+
+export const HASHED_PIN_LENGTH = 5;
