@@ -1,6 +1,9 @@
 import { CLASS_STATUS, PROGRAM_DETAIL_TABS } from "./type";
 
 export const OTP_RESEND_TIME = 20; // seconds
+
+export const URL_CLASS_DETAIL = "/class-detail";
+
 export const COMMON_ROUTES = {
   classList: "/class",
   registeredProgram: "/registered-program",
@@ -14,6 +17,9 @@ export const COMMON_ROUTES = {
   programDetail: (id: string, tab: PROGRAM_DETAIL_TABS) => {
     if (tab) return `/program-detail/${id}?tab=${tab}`;
     return `/program-detail/${id}`;
+  },
+  classDetailReport: (classId: string, reportId: string) => {
+    return `${URL_CLASS_DETAIL}/${classId}/report/${reportId}`;
   },
 };
 
@@ -49,5 +55,8 @@ export const CLASS_STATUS_ORDER = [
   CLASS_STATUS.FINISHED,
   CLASS_STATUS.CANCELED,
 ];
+
+export const TRANSACTION_FEE = 175; // VND
+export const LESSON_FEE_RATE = 7 / 100; // 7%
 
 export const HASHED_PIN_LENGTH = 5;

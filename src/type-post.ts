@@ -459,3 +459,7 @@ export type TAccountBankInfoCreate = {
 export type TAccountBankInfoUpdate = {
   id: string;
 } & Partial<TAccountBankInfoCreate>;
+
+export type TAccountVerifyPin = {
+  pin: string;
+};

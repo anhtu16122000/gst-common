@@ -24,11 +24,13 @@ import {
   TRegisteredProgramEntity,
   TSessionGroupQuestionEntity,
   TStudentEntity,
+  TTransactionEntity,
 } from "./entity";
 import {
   ANSWER_QUESTION_TYPE,
   CLASS_STATUS,
   CUSTOMER_TYPE,
+  PROPOSED_LEARNING_PAYMENT_STATUS,
   REGISTER_METHOD,
   SESSION_GROUP_QUESTION,
 } from "./type";
@@ -324,34 +326,40 @@ export type TLessonStudentCompletedAndNotPaidLessonsRes = (TLessonEntity & {
 export type TProposedLearningCreateRes = TProposedLearningEntity;
 
 export type TProposedLearningListRes = {
-  list: (TProposedLearningEntity & {
-    hasPaid: boolean;
+  list: {
+    id: string;
+    title: string;
+    createdAt: string;
+    updatedAt: string;
+    paymentStatus: PROPOSED_LEARNING_PAYMENT_STATUS;
+    totalFee: number;
     totalLessons: number;
-    totalTuition: number;
-  })[];
+  }[];
   total: number;
 };
 export type TProposedLearningStudentListRes = {
-  list: (TProposedLearningEntity & {
-    hasPaid: boolean;
+  list: {
+    id: string;
+    title: string;
+    createdAt: string;
+    updatedAt: string;
+    paymentStatus: PROPOSED_LEARNING_PAYMENT_STATUS;
+    totalFee: number;
     totalLessons: number;
-    totalTuition: number;
-  })[];
+  }[];
   total: number;
 };
 
 export type TProposedLearningDetailRes = TProposedLearningEntity & {
   class: TClassEntity;
-  hasPaid: boolean;
+  transaction: TTransactionEntity | null;
   totalLessons: number;
-  totalTuition: number;
   lessons: TLessonEntity[];
 };
 export type TProposedLearningStudentDetailRes = TProposedLearningEntity & {
   class: TClassEntity;
-  hasPaid: boolean;
+  transaction: TTransactionEntity | null;
   totalLessons: number;
-  totalTuition: number;
   lessons: TLessonEntity[];
 };
 

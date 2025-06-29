@@ -9,11 +9,15 @@ import {
   POST_TYPE,
   PROGRAM_METHOD,
   PROGRAM_SUITABLE_LEARNER,
+  PROPOSED_LEARNING_PAYMENT_STATUS,
   QUESTION_TYPES,
   REGISTER_METHOD,
   REGISTERED_PROGRAM_STATUS,
   SCHOOL_STATUS,
   SESSION_GROUP_QUESTION,
+  TRANSACTION_GATEWAY,
+  TRANSACTION_STATUS,
+  TRANSACTION_TYPE,
 } from "./type";
 
 export type TProgramSuitableLearnerEntity = {
@@ -204,6 +208,7 @@ export type TProposedLearningLessonEntity = {
 export type TProposedLearningEntity = {
   class: TClassEntity;
   title: string;
+  paymentStatus: PROPOSED_LEARNING_PAYMENT_STATUS;
   description: string | null;
 } & BaseEntity;
 
@@ -301,3 +306,17 @@ export type TAccountBankInfoEntity = {
   bankNumber: string;
   receiverName: string;
 } & BaseEntity;
+
+export type TTransactionEntity = {
+  type: TRANSACTION_TYPE;
+  code: string;
+  amount: number;
+  amountReceive: number;
+  fee: number;
+  serviceFee: number;
+  status: TRANSACTION_STATUS;
+  gateway: TRANSACTION_GATEWAY;
+  gatewayTransactionId: string;
+  gatewayData: Record<string, any>;
+  completedAt: string;
+};
