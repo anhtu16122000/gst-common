@@ -13,6 +13,9 @@ import {
   REGISTERED_PROGRAM_STATUS,
   SCHOOL_STATUS,
   SORT_TYPE,
+  TRANSACTION_STATUS,
+  TRANSACTION_TYPE,
+  WITHDRAW_REQUEST_STATUS,
 } from "./type";
 
 export const OBJECT_REGISTER_METHOD = {
@@ -258,6 +261,10 @@ export const OBJECT_QUESTION_TYPES = {
     value: QUESTION_TYPES.SPEAKING,
     label: "Nói",
   },
+  [QUESTION_TYPES.WRITING]: {
+    value: QUESTION_TYPES.WRITING,
+    label: "Viết",
+  },
   [QUESTION_TYPES.TEXT]: {
     value: QUESTION_TYPES.TEXT,
     label: "Tiêu đề",
@@ -310,5 +317,50 @@ export const OBJECT_ANSWER_QUESTION_TYPE = {
   [ANSWER_QUESTION_TYPE.WAIT_FOR_GRADE]: {
     value: ANSWER_QUESTION_TYPE.WAIT_FOR_GRADE,
     label: "Chờ chấm",
+  },
+};
+
+export const OBJECT_TRANSACTION_TYPE = {
+  [TRANSACTION_TYPE.DEPOSIT]: {
+    value: TRANSACTION_TYPE.DEPOSIT,
+    label: "Nộp tiền",
+  },
+  [TRANSACTION_TYPE.WITHDRAW]: {
+    value: TRANSACTION_TYPE.WITHDRAW,
+    label: "Rút tiền",
+  },
+  [TRANSACTION_TYPE.LESSON_FEE]: {
+    value: TRANSACTION_TYPE.LESSON_FEE,
+    label: "Học phí",
+  },
+};
+
+export const OBJECT_TRANSACTION_STATUS = {
+  [TRANSACTION_STATUS.PENDING]: {
+    value: TRANSACTION_STATUS.PENDING,
+    label: "Chờ thanh toán",
+  },
+  [TRANSACTION_STATUS.SUCCESS]: {
+    value: TRANSACTION_STATUS.SUCCESS,
+    label: "Thành công",
+  },
+  [TRANSACTION_STATUS.FAILED]: {
+    value: TRANSACTION_STATUS.FAILED,
+    label: "Thất bại",
+  },
+};
+
+export const OBJECT_WITHDRAW_REQUEST_STATUS = {
+  [WITHDRAW_REQUEST_STATUS.PENDING]: {
+    value: WITHDRAW_REQUEST_STATUS.PENDING,
+    label: "Đợi xử lý",
+  },
+  [WITHDRAW_REQUEST_STATUS.APPROVED]: {
+    value: WITHDRAW_REQUEST_STATUS.APPROVED,
+    label: "Đã xử lý",
+  },
+  [WITHDRAW_REQUEST_STATUS.REJECTED]: {
+    value: WITHDRAW_REQUEST_STATUS.REJECTED,
+    label: "Từ chối",
   },
 };

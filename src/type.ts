@@ -1,4 +1,4 @@
-import { TAccountEntity } from "./entity";
+import { TAccountEntity, TInternalAccountEntity } from "./entity";
 
 export enum CUSTOMER_TYPE {
   TUTOR = "tutor",
@@ -46,6 +46,14 @@ export type BaseEntity = {
   deletedAt: string | null;
   createdBy: TAccountEntity | null;
   updatedBy: TAccountEntity | null;
+};
+export type BaseInternalEntity = {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: string | null;
+  createdBy: TInternalAccountEntity | null;
+  updatedBy: TInternalAccountEntity | null;
 };
 
 export type DATA_THIRD_PARTY_LOGIN = {
@@ -135,6 +143,7 @@ export enum QUESTION_TYPES {
   WORD_ARRANGEMENT = "WORD_ARRANGEMENT",
   SPEAKING = "SPEAKING",
   TEXT = "TEXT",
+  WRITING = "WRITING",
 }
 export enum SESSION_GROUP_QUESTION {
   IN_PROCESS = "IN_PROCESS",
@@ -175,4 +184,16 @@ export enum TRANSACTION_STATUS {
 export enum TRANSACTION_GATEWAY {
   SEPAY = "SEPAY",
   MANUAL = "MANUAL",
+}
+
+export enum WITHDRAW_REQUEST_STATUS {
+  PENDING = "PENDING",
+  APPROVED = "APPROVED",
+  REJECTED = "REJECTED",
+  COMBINED = "COMBINED",
+  CANCELLED = "CANCELLED",
+}
+
+export enum INTERNAL_ROLE {
+  ADMIN = "ADMIN",
 }

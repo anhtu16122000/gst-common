@@ -9,10 +9,7 @@ export const COMMON_ROUTES = {
   registeredProgram: "/registered-program",
   studentClassList: "/student-class",
   classDetail: (id: string) => {
-    return `/class-detail/${id}`;
-  },
-  studentClassDetail: (id: string) => {
-    return `/student-class-detail/${id}`;
+    return `${URL_CLASS_DETAIL}/${id}`;
   },
   programDetail: (id: string, tab: PROGRAM_DETAIL_TABS) => {
     if (tab) return `/program-detail/${id}?tab=${tab}`;
@@ -48,6 +45,14 @@ export const ACCEPTED_VIDEO_TYPES = [
   "video/x-matroska",
   "video/quicktime",
 ];
+
+export const ACCEPTED_AUDIO_TYPES = [
+  "audio/mpeg",
+  "audio/ogg",
+  "audio/wav",
+  "audio/webm",
+];
+
 export const CLASS_STATUS_ORDER = [
   CLASS_STATUS.HAPPENING,
   CLASS_STATUS.WAIT_FOR_ACCEPTING,

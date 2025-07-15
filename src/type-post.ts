@@ -3,15 +3,18 @@ import {
   BasePaginationParams,
   CLASS_STATUS,
   DAY_OF_WEEK,
+  INTERNAL_ROLE,
   POST_TYPE,
   PROGRAM_METHOD,
   QUESTION_TYPES,
   REGISTERED_PROGRAM_STATUS,
   SORT_TYPE,
+  WITHDRAW_REQUEST_STATUS,
 } from "./type";
 
 export type TRegisteredProgramCreatePost = {
   studentNote?: string;
+  viaZalo?: boolean;
   studentPhoneNumber?: string;
   studentProgramMethodDesired?: PROGRAM_METHOD;
   studentProvinceCode?: string;
@@ -260,6 +263,9 @@ export type TSubmitGroupQuestion = {
   }[];
   essay?: { essay?: string };
   speaking?: { audioId?: string | null };
+  writing?: {
+    content?: string | null;
+  };
 }[];
 export type TGroupQuestionStudentFinishDoing = {
   sessionGroupQuestionId: string;
@@ -462,4 +468,44 @@ export type TAccountBankInfoUpdate = {
 
 export type TAccountVerifyPin = {
   pin: string;
+};
+
+export type TWithdrawRequestAdd = {
+  amount: number;
+};
+
+export type TWithdrawRequestList = {} & BasePaginationParams;
+export type TTransactionAllList = {} & BasePaginationParams;
+export type TAccountChangePassword = {
+  oldPassword: string;
+  newPassword: string;
+};
+
+export type TGroupQuestionSendComment = {
+  comment: string;
+  answerQuestionId: string;
+};
+
+export type TInternalAccountNew = {
+  username: string;
+  password: string;
+  fullname: string;
+  email?: string;
+  phone?: string;
+  role: INTERNAL_ROLE;
+};
+
+export type TInternalAccountList = {} & BasePaginationParams;
+
+export type TInternalAccountLogin = {
+  username: string;
+  password: string;
+};
+
+export type TWithDrawRequestInternalList = {
+  status: WITHDRAW_REQUEST_STATUS;
+} & BasePaginationParams;
+
+export type TWithDrawRequestInternalGetOrCreateTransaction = {
+  withdrawRequestId: string;
 };

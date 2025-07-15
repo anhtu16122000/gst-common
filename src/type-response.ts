@@ -10,6 +10,8 @@ import {
   TFileEntity,
   TFileLessonEntity,
   TGroupQuestionEntity,
+  THistoryLoginEntity,
+  TInternalAccountEntity,
   TLessonEntity,
   TPostCommentEntity,
   TPostEntity,
@@ -25,6 +27,8 @@ import {
   TSessionGroupQuestionEntity,
   TStudentEntity,
   TTransactionEntity,
+  TWalletEntity,
+  TWithdrawRequestEntity,
 } from "./entity";
 import {
   ANSWER_QUESTION_TYPE,
@@ -498,6 +502,7 @@ export type TGroupQuestionStudentResultRes = TSessionGroupQuestionEntity & {
     questions: (TQuestionEntity & {
       answerType: ANSWER_QUESTION_TYPE;
       feedbackContent: string | null;
+      commentContent: string | null;
       answerQuestionId: string;
       choices: (TQuestionTypeChoiceEntity & { isChosen: boolean })[];
       essays: TQuestionTypeEssayEntity[];
@@ -517,6 +522,7 @@ export type TGroupQuestionResultRes = TSessionGroupQuestionEntity & {
   groupQuestion: TGroupQuestionEntity & {
     questions: (TQuestionEntity & {
       file: TFileEntity;
+      commentContent: string | null;
       feedbackContent: string | null;
       answerType: ANSWER_QUESTION_TYPE;
       answerQuestionId: string;
@@ -758,6 +764,7 @@ export type TFileUploadCommonRes = TFileEntity & {
   createdBy: TAccountEntity;
 };
 export type TGroupQuestionSendFeedbackRes = TAnswerQuestionEntity;
+export type TGroupQuestionSendCommentRes = TAnswerQuestionEntity;
 export type TGroupQuestionChangeAnswerQuestionTypeRes = TAnswerQuestionEntity;
 
 export type TProgramPublicLearnedProgramRes = {
@@ -795,3 +802,43 @@ export type TAccountBankInfoCurrentRes = TAccountBankInfoEntity & {
   account: TAccountEntity;
   bank: TBankEntity;
 };
+
+export type TWalletInfoRes = TWalletEntity;
+
+export type TWithdrawRequestAddRes = TWalletEntity;
+
+export type TWithdrawRequestListRes = {
+  list: (TWithdrawRequestEntity & {
+    transaction: TTransactionEntity;
+  })[];
+  total: number;
+};
+export type TTransactionAllListRes = {
+  list: TTransactionEntity[];
+  total: number;
+};
+export type TInternalAccountNewRes = TInternalAccountEntity;
+export type TInternalAccountListRes = {
+  accounts: TInternalAccountEntity[];
+  total: number;
+};
+
+export type TInternalAccountLoginRes = {
+  accessToken: string;
+  account: TInternalAccountEntity;
+  refreshId: string;
+  expiredRefresh: Date;
+  newHistoryLogin: THistoryLoginEntity;
+};
+
+export type TWithDrawRequestInternalListRes = {
+  list: TWithdrawRequestEntity &
+    {
+      account: TAccountEntity;
+      transaction: TTransactionEntity;
+    }[];
+  total: number;
+};
+
+export type TWithDrawRequestInternalGetOrCreateTransactionRes =
+  TTransactionEntity;

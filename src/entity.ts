@@ -1,8 +1,10 @@
 import {
   BaseEntity,
+  BaseInternalEntity,
   CLASS_STATUS,
   CUSTOMER_TYPE,
   DAY_OF_WEEK,
+  INTERNAL_ROLE,
   LESSON_ACTIVITY_STATUS,
   NOTIFICATION_STATUS,
   NOTIFICATION_TYPE,
@@ -18,6 +20,7 @@ import {
   TRANSACTION_GATEWAY,
   TRANSACTION_STATUS,
   TRANSACTION_TYPE,
+  WITHDRAW_REQUEST_STATUS,
 } from "./type";
 
 export type TProgramSuitableLearnerEntity = {
@@ -155,6 +158,7 @@ export type TNotificationEntity = {
 export type TRegisteredProgramEntity = {
   status: REGISTERED_PROGRAM_STATUS;
   note: string | null;
+  viaZalo: boolean;
   studentNote: string | null;
   studentPhoneNumber: string;
   studentProgramMethodDesired: PROGRAM_METHOD | null;
@@ -261,6 +265,7 @@ export type TSessionGroupQuestionEntity = {
 
 export type TAnswerQuestionEntity = {
   answerText: string;
+  commentContent: string | null;
   feedbackContent: string | null;
 } & BaseEntity;
 
@@ -319,4 +324,35 @@ export type TTransactionEntity = {
   gatewayTransactionId: string;
   gatewayData: Record<string, any>;
   completedAt: string;
+} & BaseEntity;
+
+export type TWalletEntity = {
+  balance: number;
+  lockedBalance: number;
+} & BaseEntity;
+
+export type TWithdrawRequestEntity = {
+  amount: number;
+  status: WITHDRAW_REQUEST_STATUS;
+  rejectReason: string;
+  completedAt: string;
+} & BaseEntity;
+
+export type TInternalAccountEntity = {
+  username: string;
+  password: string;
+  fullname: string;
+  email: string;
+  phone: string;
+  isActive: boolean;
+  role: INTERNAL_ROLE;
+} & BaseInternalEntity;
+
+export type THistoryLoginEntity = {
+  device: string;
+  id: string;
+  os: string;
+  browser: string;
+  location: string;
+  expiredRefresh: string;
 };
