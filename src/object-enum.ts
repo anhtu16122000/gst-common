@@ -363,4 +363,12 @@ export const OBJECT_WITHDRAW_REQUEST_STATUS = {
     value: WITHDRAW_REQUEST_STATUS.REJECTED,
     label: "Từ chối",
   },
+  [WITHDRAW_REQUEST_STATUS.COMBINED]: {
+    value: WITHDRAW_REQUEST_STATUS.COMBINED,
+    label: "Gộp",
+  },
+  [WITHDRAW_REQUEST_STATUS.CANCELLED]: {
+    value: WITHDRAW_REQUEST_STATUS.CANCELLED,
+    label: "Đã huỷ",
+  },
 };

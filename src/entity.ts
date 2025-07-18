@@ -37,7 +37,6 @@ export type TProgramEntity = {
   fromPrice: number;
   toPrice: number;
   account: TAccountEntity;
-  sessionPerWeek: number;
   method: PROGRAM_METHOD;
   durationPerSession: number;
 } & BaseEntity;

@@ -8,6 +8,7 @@ export const COMMON_ROUTES = {
   classList: "/class",
   registeredProgram: "/registered-program",
   studentClassList: "/student-class",
+  wallet: "/wallet",
   classDetail: (id: string) => {
     return `${URL_CLASS_DETAIL}/${id}`;
   },

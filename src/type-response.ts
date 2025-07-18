@@ -5,6 +5,7 @@ import {
   TBankEntity,
   TClassEntity,
   TClassNotificationEntity,
+  TDistrictEntity,
   TDocumentsEntity,
   TEditorEntity,
   TFileEntity,
@@ -19,6 +20,7 @@ import {
   TProgramRatingEntity,
   TProposedLearningEntity,
   TProposedLearningLessonEntity,
+  TProvinceEntity,
   TQuestionEntity,
   TQuestionTypeChoiceEntity,
   TQuestionTypeEssayEntity,
@@ -27,6 +29,7 @@ import {
   TSessionGroupQuestionEntity,
   TStudentEntity,
   TTransactionEntity,
+  TTutorEntity,
   TWalletEntity,
   TWithdrawRequestEntity,
 } from "./entity";
@@ -832,13 +835,27 @@ export type TInternalAccountLoginRes = {
 };
 
 export type TWithDrawRequestInternalListRes = {
-  list: TWithdrawRequestEntity &
-    {
-      account: TAccountEntity;
-      transaction: TTransactionEntity;
-    }[];
+  list: (TWithdrawRequestEntity & {
+    account: TAccountEntity;
+    transaction: TTransactionEntity;
+  })[];
   total: number;
 };
 
-export type TWithDrawRequestInternalGetOrCreateTransactionRes =
-  TTransactionEntity;
+export type TWithDrawRequestInternalGetOrCreateTransactionRes = {
+  transaction?: TTransactionEntity;
+  bankInfo?: TAccountBankInfoEntity & {
+    bank: TBankEntity;
+  };
+};
+export type TWithdrawRequestCancelRes = TWithdrawRequestEntity;
+export type TWithdrawRequestCurrentWithdrawRes = TWithdrawRequestEntity;
+
+export type TTutorPublicListRes = {
+  tutors: (TTutorEntity & {
+    account: TAccountEntity;
+    province: TProvinceEntity;
+    district: TDistrictEntity;
+  })[];
+  total: number;
+};

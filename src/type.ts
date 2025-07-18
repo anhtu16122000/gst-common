@@ -61,6 +61,7 @@ export type DATA_THIRD_PARTY_LOGIN = {
   providerId: string;
   provider: REGISTER_METHOD;
   avatar?: string;
+  email: string;
 };
 
 export enum PROGRAM_SUITABLE_LEARNER {
@@ -77,8 +78,8 @@ export enum SCHOOL_STATUS {
 }
 
 export enum NOTIFICATION_TYPE {
-  PROGRAM_REGISTER = "program_register",
-  STANDARD = "STANDARD",
+  STANDARD = "STANDARD", // thông báo của người dùng
+  SYSTEM = "SYSTEM", // thông báo đến từ internal
 }
 
 export enum NOTIFICATION_STATUS {
@@ -96,6 +97,7 @@ export enum REGISTERED_PROGRAM_STATUS {
 export enum REFRESH_TYPE {
   NOTIFICATION = "NOTIFICATION",
   PROPOSED_LEARNING_PAYMENT = "PROPOSED_LEARNING_PAYMENT",
+  WITHDRAW_SUCCESS = "WITHDRAW_SUCCESS",
 }
 
 export enum SORT_TYPE {
@@ -196,4 +198,9 @@ export enum WITHDRAW_REQUEST_STATUS {
 
 export enum INTERNAL_ROLE {
   ADMIN = "ADMIN",
+}
+
+export enum MISSING_TRANSACTION_TYPE {
+  IN = "IN",
+  OUT = "OUT",
 }

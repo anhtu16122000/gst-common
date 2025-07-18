@@ -409,6 +409,11 @@ export type TPostAllListPostByAccount = {
 export type TProgramPublicList = {
   search?: string;
   accountId?: string;
+  fromPrice?: number;
+  toPrice?: number;
+  programMethod?: PROGRAM_METHOD;
+  provinceCode?: string;
+  districtCode?: string;
 } & BasePaginationParams;
 
 export type TProgramRatingPublicCountByScore = {
@@ -509,3 +514,11 @@ export type TWithDrawRequestInternalList = {
 export type TWithDrawRequestInternalGetOrCreateTransaction = {
   withdrawRequestId: string;
 };
+export type TWithdrawRequestCancel = {
+  id: string;
+};
+
+export type TTutorPublicList = {
+  search?: string;
+  provinceCode?: string;
+} & BasePaginationParams;
