@@ -193,17 +193,17 @@ export type TClassStudentStatisticGroupByMonth = {
 
 export type TDocumentUpload = {
   file: any;
-  programId: string;
+  documentFolderId: string;
   name: string;
 };
 
 export type TDocumentList = {
   search?: string;
-  programId?: string;
+  documentFolderId?: string;
 } & BasePaginationParams;
 
 export type TDocumentChangeOrder = {
-  programId: string;
+  documentFolderId: string;
   documents: {
     documentId: string;
     order: number;
@@ -235,7 +235,7 @@ export type TGroupQuestionCreate = {
 };
 
 export type TDocumentCreateGroupQuestion = {
-  programId: string;
+  documentFolderId: string;
   groupQuestion: TGroupQuestionCreate;
 };
 export type TLessonCreateGroupQuestion = {
@@ -277,14 +277,14 @@ export type TGroupQuestionStudentDraft = {
 };
 
 export type TDocumentCreateEditor = {
-  programId: string;
+  documentFolderId: string;
   title: string;
   content: string;
 };
 
 export type TLessonCreateEditor = {
   lessonId: string;
-} & Omit<TDocumentCreateEditor, "programId">;
+} & Omit<TDocumentCreateEditor, "documentFolderId">;
 export type TClassNotificationImport = {
   classId: string;
   documentIds: string[];
@@ -296,7 +296,7 @@ export type TClassNotificationAddGroupQuestion = {
 
 export type TClassNotificationCreateEditor = {
   classId: string;
-} & Omit<TDocumentCreateEditor, "programId">;
+} & Omit<TDocumentCreateEditor, "documentFolderId">;
 export type TClassNotificationUpload = {
   file: any;
   fileName: string;
@@ -348,6 +348,7 @@ export type TProgramRatingPublicList = {
 
 export type TProgramRatingStudentHasRated = {
   programId?: string;
+  accountTutorId?: string;
 };
 
 export type TProgramRatingStudentCanRate = {
@@ -522,3 +523,49 @@ export type TTutorPublicList = {
   search?: string;
   provinceCode?: string;
 } & BasePaginationParams;
+
+export type TDocumentImport = {
+  orderIds: { id: string; order: number }[];
+  documentFolderId: string;
+};
+
+export type TDocumentFolderCreate = {
+  name: string;
+  programId: string;
+};
+
+export type TDocumentFolderUpdate = { id: string; name: string };
+
+export type TDocumentMove = {
+  documentFolderId: string;
+  documentIds: string[];
+};
+
+export type TStudentDocumentUpload = {
+  documentFolderId: string;
+  name: string;
+  file: any;
+};
+
+export type TStudentDocumentList = {
+  documentFolderId?: string;
+};
+export type TStudentDocumentCreateGroupQuestion = {
+  documentFolderId: string;
+  groupQuestion: TGroupQuestionCreate;
+};
+
+export type TStudentDocumentCreateEditor = {
+  documentFolderId: string;
+  title: string;
+  content: string;
+};
+
+export type TStudentDocumentFolderCreate = {
+  name: string;
+};
+
+export type TStudentDocumentFolderUpdate = {
+  id: string;
+  name: string;
+};

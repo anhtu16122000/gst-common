@@ -6,6 +6,7 @@ import {
   TClassEntity,
   TClassNotificationEntity,
   TDistrictEntity,
+  TDocumentFolderEntity,
   TDocumentsEntity,
   TEditorEntity,
   TFileEntity,
@@ -27,6 +28,8 @@ import {
   TQuestionTypeWordArrangementEntity,
   TRegisteredProgramEntity,
   TSessionGroupQuestionEntity,
+  TStudentDocumentEntity,
+  TStudentDocumentFolderEntity,
   TStudentEntity,
   TTransactionEntity,
   TTutorEntity,
@@ -193,11 +196,16 @@ export type TClassNotificationCreateRes = TClassNotificationEntity;
 export type TClassNotificationUpdateRes = TClassNotificationEntity;
 export type TClassNotificationListRes = {
   classNotifications: (Omit<TClassNotificationEntity, "class"> & {
-    file: TFileEntity | null;
-    editor: TEditorEntity | null;
+    file:
+      | (TFileEntity & {
+          referencesDocument: TDocumentsEntity | null;
+        })
+      | null;
+    editor: (TEditorEntity & { referencesDocument: TDocumentsEntity }) | null;
     groupQuestion:
       | (TGroupQuestionEntity & {
           totalQuestion: number;
+          referencesDocument: TDocumentsEntity;
           sessionGroupQuestionsLastCreatedAt: string | null;
           sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
           sessionGroupQuestionId: string | null;
@@ -460,12 +468,18 @@ export type TGroupQuestionUpdateRes = TGroupQuestionEntity;
 
 export type TLessonImportRes = TLessonEntity & {};
 export type TLessonDocumentsRes = TLessonEntity & {
-  fileLessons: TFileLessonEntity[];
-  editors: TEditorEntity[];
+  files: (TFileLessonEntity & {
+    referencesDocument: TDocumentsEntity | null;
+  })[];
+  editors: (TEditorEntity & {
+    referencesDocument: TDocumentsEntity | null;
+  })[];
   groupQuestions: (Pick<TGroupQuestionEntity, "id" | "title"> & {
     totalQuestion: number;
     sessionGroupQuestionsLastCreatedAt: string | null;
     sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
+    isCreatedByCurrentAccount: boolean;
+    referencesDocumentId: string | null;
     sessionGroupQuestionId: string | null;
     sessionGroupQuestionsCorrectQuestion: number | null;
     sessionGroupQuestionsTotalQuestion: number | null;
@@ -474,7 +488,7 @@ export type TLessonDocumentsRes = TLessonEntity & {
   totalQuestion: number;
 };
 export type TLessonStudentDocumentsRes = TLessonEntity & {
-  fileLessons: TFileLessonEntity[];
+  files: TFileLessonEntity[];
   editors: TEditorEntity[];
   groupQuestions: (Pick<TGroupQuestionEntity, "id" | "title"> & {
     totalQuestion: number;
@@ -570,8 +584,12 @@ export type TFileDeleteRes = TFileEntity;
 
 export type TLessonAllDocumentsRes = {
   lessons: (Omit<TLessonEntity, "class"> & {
-    fileLessons: TFileLessonEntity[];
-    editors: TEditorEntity[];
+    files: (TFileLessonEntity & {
+      referencesDocument: TDocumentsEntity | null;
+    })[];
+    editors: (TEditorEntity & {
+      referencesDocument: TDocumentsEntity | null;
+    })[];
     groupQuestions: (TGroupQuestionEntity & {
       totalQuestion: number;
       sessionGroupQuestionsLastCreatedAt: string | null;
@@ -580,13 +598,14 @@ export type TLessonAllDocumentsRes = {
       totalWaitForGradeQuestion: number;
       sessionGroupQuestionTotalQuestion: number;
       totalCorrectQuestion: number;
+      referencesDocument: TDocumentsEntity | null;
     })[];
   })[];
   total: number;
 };
 export type TLessonStudentAllDocumentsRes = {
   lessons: (Omit<TLessonEntity, "class"> & {
-    fileLessons: TFileLessonEntity[];
+    files: TFileLessonEntity[];
     editors: TEditorEntity[];
     groupQuestions: (TGroupQuestionEntity & {
       totalQuestion: number;
@@ -859,3 +878,56 @@ export type TTutorPublicListRes = {
   })[];
   total: number;
 };
+
+export type TDocumentFolderCreateRes = TDocumentFolderEntity;
+export type TDocumentFolderUpdateRes = TDocumentFolderEntity;
+
+export type TDocumentFolderListRes = (TDocumentFolderEntity & {
+  totalEditor: number;
+  totalFile: number;
+  totalSize: number;
+  totalGroupQuestion: number;
+})[];
+
+export type TDocumentFolderTreeListRes = (TProgramEntity & {
+  documentFolders: TDocumentFolderEntity[];
+})[];
+
+export type TDocumentMoveRes = TDocumentsEntity[];
+
+export type TStudentDocumentUploadRes = TStudentDocumentEntity;
+
+export type TStudentDocumentEntityRes = TStudentDocumentEntity;
+
+export type TStudentDocumentListRes = {
+  documents: (TStudentDocumentEntity & {
+    program: TProgramEntity;
+    file: TFileEntity | null;
+    groupQuestion: TGroupQuestionEntity | null;
+    editor: TEditorEntity | null;
+    totalQuestion: number;
+  })[];
+  total: number;
+};
+export type TStudentDocumentCreateGroupQuestionRes = TGroupQuestionEntity;
+
+export type TStudentDocumentCreateEditorRes = TStudentDocumentEntity & {
+  editor: TEditorEntity;
+};
+
+export type TStudentDocumentDeleteEditorRes = TStudentDocumentEntity;
+
+export type TStudentDocumentFolderCreateRes = TStudentDocumentFolderEntity;
+
+export type TStudentDocumentFolderUpdateRes = TStudentDocumentFolderEntity;
+export type TStudentDocumentFolderListRes = {
+  list: (TStudentDocumentFolderEntity & {
+    totalEditor: number;
+    totalFile: number;
+    totalSize: number;
+    totalGroupQuestion: number;
+  })[];
+  total: number;
+};
+
+export type TStudentDocumentFolderDeleteRes = TStudentDocumentFolderEntity;

@@ -355,3 +355,15 @@ export type THistoryLoginEntity = {
   location: string;
   expiredRefresh: string;
 };
+
+export type TDocumentFolderEntity = {
+  name: string;
+} & BaseEntity;
+
+export type TStudentDocumentEntity = {
+  order: number;
+} & BaseEntity;
+
+export type TStudentDocumentFolderEntity = {
+  name: string;
+} & BaseEntity;
