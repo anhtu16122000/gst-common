@@ -63,9 +63,9 @@ export const CLASS_STATUS_ORDER = [
 ];
 
 export const TRANSACTION_FEE = 175; // VND
-export const LESSON_FEE_RATE = 7 / 100; // 7%
+export const LESSON_FEE_RATE = 4.5 / 100; // 7%
 
 export const HASHED_PIN_LENGTH = 5;
-export const MAX_DOCUMENT_FOLDER = 5;
+export const MAX_DOCUMENT_FOLDER = 20;
 
-export const MAX_STUDENT_DOCUMENT_FOLDER = 8;
+export const MAX_STUDENT_DOCUMENT_FOLDER = 20;

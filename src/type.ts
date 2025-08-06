@@ -204,3 +204,14 @@ export enum MISSING_TRANSACTION_TYPE {
   IN = "IN",
   OUT = "OUT",
 }
+
+export type TSessionGroupQuestionStatistic = {
+  sessionGroupQuestionId: string;
+  totalCorrectQuestion: number;
+  totalWaitForGradeQuestion: number;
+  sessionGroupQuestionTotalQuestion: number;
+};
+export type TClassNotificationStatistic = {
+  id: string;
+  isExistingInDocument: boolean;
+};

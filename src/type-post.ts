@@ -209,6 +209,13 @@ export type TDocumentChangeOrder = {
     order: number;
   }[];
 };
+export type TStudentDocumentChangeOrder = {
+  documentFolderId: string;
+  documents: {
+    documentId: string;
+    order: number;
+  }[];
+};
 
 export type TGroupQuestionCreate = {
   title: string;
@@ -391,7 +398,11 @@ export type TPostPublicListComment = {
   postId?: string;
   commentId?: string;
 } & BasePaginationParams;
-export type TPostPublicNewFeeds = {} & BasePaginationParams;
+export type TPostPublicNewFeeds = {
+  postType?: POST_TYPE;
+  isRawScore?: boolean;
+  search?: string;
+} & BasePaginationParams;
 
 export type TPostAllCommentUpdate = {
   commentId: string;
@@ -528,6 +539,10 @@ export type TDocumentImport = {
   orderIds: { id: string; order: number }[];
   documentFolderId: string;
 };
+export type TStudentDocumentImport = {
+  orderIds: { id: string; order: number }[];
+  documentFolderId: string;
+};
 
 export type TDocumentFolderCreate = {
   name: string;
@@ -537,6 +552,10 @@ export type TDocumentFolderCreate = {
 export type TDocumentFolderUpdate = { id: string; name: string };
 
 export type TDocumentMove = {
+  documentFolderId: string;
+  documentIds: string[];
+};
+export type TStudentDocumentMove = {
   documentFolderId: string;
   documentIds: string[];
 };
@@ -569,3 +588,57 @@ export type TStudentDocumentFolderUpdate = {
   id: string;
   name: string;
 };
+
+export type TDocumentGetByDocuments = {
+  documentIds: string[];
+};
+
+export type TPostAllShareDocument = {
+  title: string;
+  content?: string;
+  documents: {
+    documentId: string;
+    order: number;
+  }[];
+};
+
+export type TStudentDocumentGetByDocuments = {
+  documentIds: string[];
+};
+
+export type TPostAllUpdateShareDocument = {
+  postId: string;
+} & Partial<TPostAllShareDocument>;
+
+export type TStudentDocumentFolderImport = {
+  documentFolderName: string;
+  postId: string;
+  documentOrders: {
+    documentId: string;
+    order: number;
+  }[];
+};
+
+export type TDocumentFolderImport = {
+  documentFolderName: string;
+  programId: string;
+  postId: string;
+  documentOrders: {
+    documentId: string;
+    order: number;
+  }[];
+};
+
+export type TDocumentDeleteMultiple = {
+  ids: string[];
+};
+export type TStudentDocumentDeleteMultiple = {
+  ids: string[];
+};
+
+export type TGroupQuestionStudentResultHistories = {
+  groupQuestionId: string;
+} & BasePaginationParams;
+export type TGroupQuestionResultHistories = {
+  groupQuestionId: string;
+} & BasePaginationParams;

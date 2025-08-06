@@ -223,6 +223,9 @@ export type TFileLessonEntity = {
 export type TDocumentsEntity = {
   order: number;
 } & BaseEntity;
+export type TPostDocumentEntity = {
+  order: number;
+} & BaseEntity;
 
 export type TFileEntity = {
   url: string;
@@ -233,6 +236,7 @@ export type TFileEntity = {
 export type TGroupQuestionEntity = {
   title: string;
   content: string;
+  totalQuestion?: number;
 } & BaseEntity;
 export type TQuestionEntity = {
   content: string;
