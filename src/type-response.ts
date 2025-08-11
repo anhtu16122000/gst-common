@@ -5,6 +5,7 @@ import {
   TBankEntity,
   TClassEntity,
   TClassNotificationEntity,
+  TDayOfWeekEntity,
   TDistrictEntity,
   TDocumentFolderEntity,
   TDocumentsEntity,
@@ -27,10 +28,12 @@ import {
   TQuestionTypeEssayEntity,
   TQuestionTypeWordArrangementEntity,
   TRegisteredProgramEntity,
+  TRequestTutorFormEntity,
   TSessionGroupQuestionEntity,
   TStudentDocumentEntity,
   TStudentDocumentFolderEntity,
   TStudentEntity,
+  TTeachingTimeRangeEntity,
   TTransactionEntity,
   TTutorEntity,
   TWalletEntity,
@@ -495,9 +498,14 @@ export type TLessonDocumentsRes = TLessonEntity & {
   totalQuestion: number;
 };
 export type TLessonStudentDocumentsRes = TLessonEntity & {
-  files: TFileLessonEntity[];
-  editors: TEditorEntity[];
+  files: (TFileLessonEntity & {
+    isExistingInDocument: boolean;
+  })[];
+  editors: (TEditorEntity & {
+    isExistingInDocument: boolean;
+  })[];
   groupQuestions: (Pick<TGroupQuestionEntity, "id" | "title"> & {
+    isExistingInDocument: boolean;
     totalQuestion: number;
     sessionGroupQuestionsLastCreatedAt: string | null;
     sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
@@ -608,10 +616,15 @@ export type TLessonAllDocumentsRes = {
 };
 export type TLessonStudentAllDocumentsRes = {
   lessons: (Omit<TLessonEntity, "class"> & {
-    files: TFileLessonEntity[];
-    editors: TEditorEntity[];
+    files: (TFileLessonEntity & {
+      isExistingInDocument: boolean;
+    })[];
+    editors: (TEditorEntity & {
+      isExistingInDocument: boolean;
+    })[];
     groupQuestions: (TGroupQuestionEntity & {
       totalQuestion: number;
+      isExistingInDocument: boolean;
       sessionGroupQuestionsLastCreatedAt: string | null;
       sessionGroupQuestionsStatus: SESSION_GROUP_QUESTION | null;
       sessionGroupQuestionId: string | null;
@@ -1007,3 +1020,39 @@ export type TGroupQuestionResultHistoriesRes = {
   })[];
   total: number;
 };
+
+export type TRequestTutorFormCreateRes = TRequestTutorFormEntity & {
+  province: TProvinceEntity;
+  district: TDistrictEntity;
+};
+export type TRequestTutorFormListRes = (TRequestTutorFormEntity & {
+  province: TProvinceEntity;
+  district: TDistrictEntity;
+})[];
+
+export type TRequestTutorFormInternalListRes = {
+  requests: (TRequestTutorFormEntity & {
+    studyTimeRange: TTeachingTimeRangeEntity[];
+    assignAccountTutor: TAccountEntity;
+    learningDayOfWeeks: TDayOfWeekEntity[];
+    province: TProvinceEntity;
+    district: TDistrictEntity;
+    createdBy: TAccountEntity;
+  })[];
+  total: number;
+};
+
+export type TRequestTutorFormInternalCountStatusRes = {
+  totalCount: number;
+  pendingCount: number;
+  processCount: number;
+  finishedCount: number;
+  canceledCount: number;
+};
+
+export type TRequestTutorFormInternalAssignTutorRes = TRequestTutorFormEntity;
+export type TRequestTutorFormInternalCancelRes = TRequestTutorFormEntity;
+export type TRequestTutorFormGetByCodeRes = TRequestTutorFormEntity & {
+  createdBy: TAccountEntity;
+};
+export type TClassCreateByRequestTutorRes = TClassEntity;

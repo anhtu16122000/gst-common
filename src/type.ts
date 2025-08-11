@@ -17,7 +17,7 @@ export enum GENDER {
 export enum PROGRAM_METHOD {
   ONLINE = "online",
   OFFLINE = "offline",
-  ONLINE_OFFLINE = "online/offline",
+  ONLINE_OFFLINE = "Online/Offline",
 }
 
 export enum ResponseStatus {
@@ -112,6 +112,15 @@ export enum CLASS_STATUS {
   FINISHED = "FINISHED",
   CANCELED = "CANCELED",
 }
+export enum TEACHING_TIME_RANGE {
+  RANGE_6_8 = "RANGE_6_8",
+  RANGE_8_10 = "RANGE_8_10",
+  RANGE_10_12 = "RANGE_10_12",
+  RANGE_14_16 = "RANGE_14_16",
+  RANGE_16_18 = "RANGE_16_18",
+  RANGE_18_20 = "RANGE_18_20",
+  RANGE_20_22 = "RANGE_20_22",
+}
 
 export enum CLASS_STATUS_TUTOR_EDIT {
   HAPPENING = CLASS_STATUS.HAPPENING,
@@ -203,6 +212,13 @@ export enum INTERNAL_ROLE {
 export enum MISSING_TRANSACTION_TYPE {
   IN = "IN",
   OUT = "OUT",
+}
+
+export enum REQUEST_TUTOR_FORM_STATUS {
+  PENDING = "PENDING",
+  PROCESS = "PROCESS",
+  FINISHED = "FINISHED",
+  CANCELED = "CANCELED",
 }
 
 export type TSessionGroupQuestionStatistic = {

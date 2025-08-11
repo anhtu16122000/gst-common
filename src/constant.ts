@@ -62,8 +62,8 @@ export const CLASS_STATUS_ORDER = [
   CLASS_STATUS.CANCELED,
 ];
 
-export const TRANSACTION_FEE = 175; // VND
-export const LESSON_FEE_RATE = 4.5 / 100; // 7%
+export const TRANSACTION_FEE = 500; // VND
+export const LESSON_FEE_RATE = 3 / 100; // 3%
 
 export const HASHED_PIN_LENGTH = 5;
 export const MAX_DOCUMENT_FOLDER = 20;

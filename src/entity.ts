@@ -15,8 +15,10 @@ import {
   QUESTION_TYPES,
   REGISTER_METHOD,
   REGISTERED_PROGRAM_STATUS,
+  REQUEST_TUTOR_FORM_STATUS,
   SCHOOL_STATUS,
   SESSION_GROUP_QUESTION,
+  TEACHING_TIME_RANGE,
   TRANSACTION_GATEWAY,
   TRANSACTION_STATUS,
   TRANSACTION_TYPE,
@@ -371,3 +373,33 @@ export type TStudentDocumentEntity = {
 export type TStudentDocumentFolderEntity = {
   name: string;
 } & BaseEntity;
+
+export type TDayOfWeekEntity = {
+  id: string;
+  dayOfWeek: DAY_OF_WEEK;
+};
+export type TTeachingTimeRangeEntity = {
+  id: string;
+  time: TEACHING_TIME_RANGE;
+};
+
+export type TRequestTutorFormEntity = {
+  phoneNumber: string;
+  code: string;
+  isZaloPhoneNumber: boolean;
+  jobDescription: string;
+  expectedFee: number;
+  method: PROGRAM_METHOD;
+  status: REQUEST_TUTOR_FORM_STATUS;
+  note: string;
+  learningDayOfWeeks: TDayOfWeekEntity[];
+  studyTimeRange: TTeachingTimeRangeEntity[];
+  address?: string;
+  completedAt: string | null;
+  processAt: string | null;
+} & BaseEntity;
+
+export type TTutorInternalOptionsRes = {
+  accounts: TAccountEntity[];
+  total: number;
+};

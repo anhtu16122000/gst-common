@@ -8,7 +8,9 @@ import {
   PROGRAM_METHOD,
   QUESTION_TYPES,
   REGISTERED_PROGRAM_STATUS,
+  REQUEST_TUTOR_FORM_STATUS,
   SORT_TYPE,
+  TEACHING_TIME_RANGE,
   WITHDRAW_REQUEST_STATUS,
 } from "./type";
 
@@ -642,3 +644,56 @@ export type TGroupQuestionStudentResultHistories = {
 export type TGroupQuestionResultHistories = {
   groupQuestionId: string;
 } & BasePaginationParams;
+
+export type TRequestTutorFormCreate = {
+  phoneNumber: string;
+  isZaloPhoneNumber: boolean;
+  jobDescription: string;
+  expectedFee: number;
+  method: PROGRAM_METHOD;
+  learningDayOfWeeks: {
+    dayOfWeek: DAY_OF_WEEK;
+  }[];
+  studyTimeRange: {
+    time: TEACHING_TIME_RANGE;
+  }[];
+  address?: string;
+  provinceCode?: string;
+  districtCode?: string;
+};
+
+export type TRequestTutorFormList = {
+  statuses?: REQUEST_TUTOR_FORM_STATUS[];
+};
+
+export type TRequestTutorFormInternalList = {
+  statuses?: REQUEST_TUTOR_FORM_STATUS[];
+  code?: string;
+} & BasePaginationParams;
+export type TRequestTutorFormInternalAssignTutor = {
+  tutorId: string;
+  requestId: string;
+  note?: string;
+};
+
+export type TTutorInternalOptions = {
+  search?: string;
+} & BasePaginationParams;
+
+export type TRequestTutorFormInternalCancel = {
+  requestId: string;
+  note: string;
+};
+
+export type TClassCreateByRequestTutor = {
+  codeRequestTutor: string;
+  name: string;
+  feePerLesson: number;
+  programId: string;
+  note?: string;
+  classLearningTime?: {
+    startTime: string;
+    endTime: string;
+    dayOfWeek: DAY_OF_WEEK;
+  }[];
+};

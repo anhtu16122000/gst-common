@@ -11,8 +11,10 @@ import {
   QUESTION_TYPES,
   REGISTER_METHOD,
   REGISTERED_PROGRAM_STATUS,
+  REQUEST_TUTOR_FORM_STATUS,
   SCHOOL_STATUS,
   SORT_TYPE,
+  TEACHING_TIME_RANGE,
   TRANSACTION_STATUS,
   TRANSACTION_TYPE,
   WITHDRAW_REQUEST_STATUS,
@@ -137,7 +139,7 @@ export const OBJECT_PROGRAM_METHOD = {
   },
   [PROGRAM_METHOD.ONLINE_OFFLINE]: {
     value: PROGRAM_METHOD.ONLINE_OFFLINE,
-    label: "Online/Offline",
+    label: "Onl/Off(linh hoạt)",
   },
 };
 export const OBJECT_REGISTERED_PROGRAM_STATUS = {
@@ -196,6 +198,40 @@ export const OBJECT_CLASS_STATUS = {
   [CLASS_STATUS.CANCELED]: {
     value: CLASS_STATUS.CANCELED,
     label: "Đã huỷ",
+  },
+};
+
+export const OBJECT_TEACHING_TIME_RANGE: Record<
+  TEACHING_TIME_RANGE,
+  { value: TEACHING_TIME_RANGE; label: string }
+> = {
+  [TEACHING_TIME_RANGE.RANGE_6_8]: {
+    value: TEACHING_TIME_RANGE.RANGE_6_8,
+    label: "6:00 - 8:00",
+  },
+  [TEACHING_TIME_RANGE.RANGE_8_10]: {
+    value: TEACHING_TIME_RANGE.RANGE_8_10,
+    label: "8:00 - 10:00",
+  },
+  [TEACHING_TIME_RANGE.RANGE_10_12]: {
+    value: TEACHING_TIME_RANGE.RANGE_10_12,
+    label: "10:00 - 12:00",
+  },
+  [TEACHING_TIME_RANGE.RANGE_14_16]: {
+    value: TEACHING_TIME_RANGE.RANGE_14_16,
+    label: "14:00 - 16:00",
+  },
+  [TEACHING_TIME_RANGE.RANGE_16_18]: {
+    value: TEACHING_TIME_RANGE.RANGE_16_18,
+    label: "16:00 - 18:00",
+  },
+  [TEACHING_TIME_RANGE.RANGE_18_20]: {
+    value: TEACHING_TIME_RANGE.RANGE_18_20,
+    label: "18:00 - 20:00",
+  },
+  [TEACHING_TIME_RANGE.RANGE_20_22]: {
+    value: TEACHING_TIME_RANGE.RANGE_20_22,
+    label: "20:00 - 22:00",
   },
 };
 
@@ -369,6 +405,25 @@ export const OBJECT_WITHDRAW_REQUEST_STATUS = {
   },
   [WITHDRAW_REQUEST_STATUS.CANCELLED]: {
     value: WITHDRAW_REQUEST_STATUS.CANCELLED,
+    label: "Đã huỷ",
+  },
+};
+
+export const OBJECT_REQUEST_TUTOR_FORM_STATUS = {
+  [REQUEST_TUTOR_FORM_STATUS.PENDING]: {
+    value: REQUEST_TUTOR_FORM_STATUS.PENDING,
+    label: "Đang tìm gia sư",
+  },
+  [REQUEST_TUTOR_FORM_STATUS.PROCESS]: {
+    value: REQUEST_TUTOR_FORM_STATUS.PROCESS,
+    label: "Gia sư đang liên hệ",
+  },
+  [REQUEST_TUTOR_FORM_STATUS.FINISHED]: {
+    value: REQUEST_TUTOR_FORM_STATUS.FINISHED,
+    label: "Đã hoàn thành",
+  },
+  [REQUEST_TUTOR_FORM_STATUS.CANCELED]: {
+    value: REQUEST_TUTOR_FORM_STATUS.CANCELED,
     label: "Đã huỷ",
   },
 };
