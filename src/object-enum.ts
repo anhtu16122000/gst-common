@@ -1,6 +1,7 @@
 import {
   ANSWER_QUESTION_TYPE,
   CLASS_STATUS,
+  CLASS_STATUS_CANCELED_REASON,
   CUSTOMER_TYPE,
   DAY_OF_WEEK,
   GENDER,
@@ -425,5 +426,33 @@ export const OBJECT_REQUEST_TUTOR_FORM_STATUS = {
   [REQUEST_TUTOR_FORM_STATUS.CANCELED]: {
     value: REQUEST_TUTOR_FORM_STATUS.CANCELED,
     label: "Đã huỷ",
+  },
+};
+
+export const OBJECT_CLASS_STATUS_CANCELED_REASON = {
+  [CLASS_STATUS_CANCELED_REASON.STUDENT_HAS_NOT_RESPONSE]: {
+    value: CLASS_STATUS_CANCELED_REASON.STUDENT_HAS_NOT_RESPONSE,
+    label: "Học viên không phản hồi",
+    shortLabel: "Không phản hồi",
+  },
+  [CLASS_STATUS_CANCELED_REASON.CREATE_BY_MISTAKE]: {
+    value: CLASS_STATUS_CANCELED_REASON.CREATE_BY_MISTAKE,
+    label: "Tạo nhầm, học viên không có nhu cầu",
+    shortLabel: "Tạo nhầm",
+  },
+  [CLASS_STATUS_CANCELED_REASON.OTHER]: {
+    value: CLASS_STATUS_CANCELED_REASON.OTHER,
+    label: "Khác",
+    shortLabel: "Khác",
+  },
+  [CLASS_STATUS_CANCELED_REASON.TUTOR_SPAM]: {
+    value: CLASS_STATUS_CANCELED_REASON.TUTOR_SPAM,
+    label: "Gia sư tạo lớp không có sự đồng ý",
+    shortLabel: "Gia sư tự tạo",
+  },
+  [CLASS_STATUS_CANCELED_REASON.CHANGE_MIND]: {
+    value: CLASS_STATUS_CANCELED_REASON.CHANGE_MIND,
+    label: "Tôi đã đổi ý",
+    shortLabel: "Đổi ý",
   },
 };

@@ -1,5 +1,7 @@
 import {
   CLASS_STATUS,
+  CLASS_STATUS_CANCELED_REASON_STUDENT,
+  CLASS_STATUS_CANCELED_REASON_TUTOR,
   CLASS_STATUS_STUDENT_EDIT,
   DAY_OF_WEEK,
   LESSON_ACTIVITY_STATUS,
@@ -34,6 +36,8 @@ export type TClassUpdate = {
 
 export type TClassStudentChangeStatus = {
   status: CLASS_STATUS_STUDENT_EDIT;
+  cancelStatusReason?: CLASS_STATUS_CANCELED_REASON_STUDENT;
+  note?: string;
 };
 
 export type TLessonConfirm = {
@@ -57,4 +61,9 @@ export type TEditorUpdate = {
   id: string;
   title?: string;
   content?: string;
+};
+
+export type TClassCancel = {
+  cancelStatusReason: CLASS_STATUS_CANCELED_REASON_TUTOR;
+  note?: string;
 };

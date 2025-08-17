@@ -112,6 +112,26 @@ export enum CLASS_STATUS {
   FINISHED = "FINISHED",
   CANCELED = "CANCELED",
 }
+export enum CLASS_STATUS_CANCELED_REASON {
+  STUDENT_HAS_NOT_RESPONSE = "STUDENT_HAS_NOT_RESPONSE", // của gia sư
+  CREATE_BY_MISTAKE = "CREATE_BY_MISTAKE", // của gia sư
+  OTHER = "OTHER", // của gia sư & học viên
+  TUTOR_SPAM = "TUTOR_SPAM", // của học viên
+  CHANGE_MIND = "CHANGE_MIND", //  của học viên
+}
+
+export enum CLASS_STATUS_CANCELED_REASON_STUDENT {
+  TUTOR_SPAM = CLASS_STATUS_CANCELED_REASON.TUTOR_SPAM,
+  CHANGE_MIND = CLASS_STATUS_CANCELED_REASON.CHANGE_MIND,
+  OTHER = CLASS_STATUS_CANCELED_REASON.OTHER,
+}
+
+export enum CLASS_STATUS_CANCELED_REASON_TUTOR {
+  STUDENT_HAS_NOT_RESPONSE = CLASS_STATUS_CANCELED_REASON.STUDENT_HAS_NOT_RESPONSE,
+  CREATE_BY_MISTAKE = CLASS_STATUS_CANCELED_REASON.CREATE_BY_MISTAKE,
+  OTHER = CLASS_STATUS_CANCELED_REASON.OTHER,
+}
+
 export enum TEACHING_TIME_RANGE {
   RANGE_6_8 = "RANGE_6_8",
   RANGE_8_10 = "RANGE_8_10",
@@ -230,4 +250,13 @@ export type TSessionGroupQuestionStatistic = {
 export type TClassNotificationStatistic = {
   id: string;
   isExistingInDocument: boolean;
+};
+
+export type TPostStatistic = {
+  id: string;
+  totalUpvote: number;
+  totalComments: number;
+  totalImported: number;
+  hasImported: boolean;
+  hasUpvoted: boolean;
 };

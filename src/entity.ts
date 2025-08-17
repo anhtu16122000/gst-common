@@ -2,6 +2,7 @@ import {
   BaseEntity,
   BaseInternalEntity,
   CLASS_STATUS,
+  CLASS_STATUS_CANCELED_REASON,
   CUSTOMER_TYPE,
   DAY_OF_WEEK,
   INTERNAL_ROLE,
@@ -46,13 +47,19 @@ export type TProgramEntity = {
 export type TStudentEntity = {
   district: TDistrictEntity | null | null;
   province: TProvinceEntity | null | null;
-  birthDay: Date | null | null;
+  birthDay: string | null;
   hiddenBirthDay: boolean;
   phoneNumber: string | null | null;
   hiddenPhoneNumber: boolean;
   account: TAccountEntity;
+  expectedFee: number | null;
   totalHourLearning: number;
+  studyMethod: PROGRAM_METHOD | null;
+  jobDescription: string | null;
   introduction: string | null;
+  isZaloPhoneNumber: boolean | null;
+  learningDayOfWeeks: TDayOfWeekEntity[];
+  studyTimeRange: TTeachingTimeRangeEntity[];
 } & BaseEntity;
 
 export type TAccountEntity = {
@@ -138,10 +145,13 @@ export type TTutorEntity = {
 
 export type TStudent = {
   account: TAccountEntity;
+  jobDescription: string | null;
   district: TDistrictEntity | null | null;
   province: TProvinceEntity | null | null;
   birthDay: string | null | null;
   hiddenBirthDay: boolean;
+  totalHourLearning: number;
+  totalProgram: number;
   phoneNumber: string | null | null;
   hiddenPhoneNumber: boolean;
 } & BaseEntity;
@@ -176,6 +186,9 @@ export type TClassEntity = {
   feePerLesson: number | null;
   note: string | null;
   status: CLASS_STATUS;
+  classStatusCanceledReason: CLASS_STATUS_CANCELED_REASON | null;
+  classStatusCanceledNote: string | null;
+  cancelBy: TAccountEntity | null;
   program: TProgramEntity;
   registeredProgram: TRegisteredProgramEntity | null;
   student: TAccountEntity | null;

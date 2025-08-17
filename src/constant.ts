@@ -12,9 +12,10 @@ export const COMMON_ROUTES = {
   classDetail: (id: string) => {
     return `${URL_CLASS_DETAIL}/${id}`;
   },
-  programDetail: (id: string, tab: PROGRAM_DETAIL_TABS) => {
-    if (tab) return `/program-detail/${id}?tab=${tab}`;
-    return `/program-detail/${id}`;
+  programDetailUrl: "chuong-trinh-hoc",
+  programDetail(id: string, tab: PROGRAM_DETAIL_TABS) {
+    if (tab) return `${this.programDetailUrl}/${id}?tab=${tab}`;
+    return `${this.programDetailUrl}/${id}`;
   },
   classDetailReport: (classId: string, reportId: string) => {
     return `${URL_CLASS_DETAIL}/${classId}/report/${reportId}`;

@@ -404,6 +404,7 @@ export type TPostPublicNewFeeds = {
   postType?: POST_TYPE;
   isRawScore?: boolean;
   search?: string;
+  exceptedIds?: string[];
 } & BasePaginationParams;
 
 export type TPostAllCommentUpdate = {
@@ -697,3 +698,7 @@ export type TClassCreateByRequestTutor = {
     dayOfWeek: DAY_OF_WEEK;
   }[];
 };
+
+export type TProgramPublicListSitemap = {} & BasePaginationParams;
+export type TPostPublicListSiteMap = {} & BasePaginationParams;
+export type TAccountPublicListSitemap = {} & BasePaginationParams;

@@ -47,6 +47,7 @@ import {
   REGISTER_METHOD,
   SESSION_GROUP_QUESTION,
   TClassNotificationStatistic,
+  TPostStatistic,
   TSessionGroupQuestionStatistic,
 } from "./type";
 
@@ -790,6 +791,7 @@ export type TAccountPublicDetailRes = Omit<TAccountEntity, "student"> & {
         totalProgram: number;
       })
     | null;
+
   hasFollowed: boolean;
   totalFollower: number;
   isMe: boolean;
@@ -1056,3 +1058,41 @@ export type TRequestTutorFormGetByCodeRes = TRequestTutorFormEntity & {
   createdBy: TAccountEntity;
 };
 export type TClassCreateByRequestTutorRes = TClassEntity;
+
+export type TProgramPublicListSitemapRes = {
+  programs: {
+    id: string;
+    updatedAt: string;
+  }[];
+  total: number;
+};
+export type TPostPublicListSiteMapRes = {
+  posts: {
+    id: string;
+    updatedAt: string;
+  }[];
+  total: number;
+};
+export type TAccountPublicListSitemapRes = {
+  accounts: {
+    id: string;
+    updatedAt: string;
+  }[];
+  total: number;
+};
+
+export type TPostPublicDetailRes =
+  | (TPostEntity &
+      TPostStatistic & {
+        files: TFileEntity[];
+        createdBy: TAccountEntity;
+        documents: (TDocumentsEntity & {
+          file: TFileEntity;
+          groupQuestion: TGroupQuestionEntity;
+          editor: TEditorEntity;
+          referencedDocument: TDocumentsEntity;
+        })[];
+      })
+  | null;
+
+export type TClassCancelRes = TClassEntity;
